@@ -4,7 +4,7 @@ Git is like a content tracker. And Git can be used to store source codes of soft
 Typically when developing software, many developers collaborate together and add codes in parellel. So a Version Control System helps in handling this by maintaining a history of what changes have happened. Git is a distributed version control system. 
 
 ### What is Github?
-
+GitHub is a cloud-based service that offers Git as a service. Git Repositories can be created and shared with other developers to collaborate efficiently
 
 ## Key terminology
 - Version Contorl System
@@ -12,10 +12,17 @@ Typically when developing software, many developers collaborate together and add
 - Source Code
 - Git
 - GitHub
+- repository
+- branch
+- main/master
+- merge
+- fork
+
 
 
 ### Git commands
 - clone (clones the repository from github)
+- init (initializes a repository)
 - add (adds files to the repository)
 - commit (commits the changes to the file into the repository)
 - push (push the local changes to the remote repository(github))
@@ -25,10 +32,16 @@ Typically when developing software, many developers collaborate together and add
 
 ## Exercise
 ### Sources
-https://www.freecodecamp.org/news/what-is-git-and-how-to-use-it-c341b049ae61/
+- https://www.freecodecamp.org/news/what-is-git-and-how-to-use-it-c341b049ae61/
+- https://www.w3schools.com/whatis/whatis_github.asp
+- https://www.w3schools.com/git/default.asp
+- https://www.youtube.com/watch?v=hwP7WQkmECE
+
+
 
 ### Overcome challanges
-[Give a short description of your challanges you encountered, and how you solved them.]
-
+I had to familiarize with Git and github concepts inorder to understand what value it adds for software development.
 ### Results
-[Describe here the result of the exercise. An image can speak more than a thousand words, include one when this wisdom applies.]
+- I created a private repository and shared it with my teammates(collaborators)
+- I cloned the repository created by my teammate Ben
+- I cloned my repository from Techgrounds and committed the changes in this exercise file.
