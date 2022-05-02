@@ -1,4 +1,4 @@
-# [Git and Git Hub]
+# Git and Git Hub
 ### What is Git?
 Git is like a content tracker. And Git can be used to store source codes of software programs. 
 Typically when developing software, many developers collaborate together and add codes in parellel. So a Version Control System helps in handling this by maintaining a history of what changes have happened. Git is a distributed version control system. 
@@ -43,5 +43,6 @@ GitHub is a cloud-based service that offers Git as a service. Git Repositories c
 I had to familiarize with Git and github concepts inorder to understand what value it adds for software development.
 ### Results
 - I created a private repository and shared it with my teammates(collaborators)
+- I added a commit to the private repository
 - I cloned the repository created by my teammate Ben
 - I cloned my repository from Techgrounds and committed the changes in this exercise file.
