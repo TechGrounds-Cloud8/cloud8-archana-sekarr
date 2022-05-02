@@ -43,6 +43,9 @@ GitHub is a cloud-based service that offers Git as a service. Git Repositories c
 I had to familiarize with Git and github concepts inorder to understand what value it adds for software development.
 ### Results
 - I created a private repository and shared it with my teammates(collaborators)
+  ![collaborators](../00_includes/addingAccessToCollaborators.png)
 - I added a commit to the private repository
-- I cloned the repository created by my teammate Ben
+  ![private repo](../00_includes/CommitToPrivateRepository.png)
+- I cloned the repository created by my teammate Ben 
+ ![Cloning](../00_includes/CloneARepositoryFromGithub.png)
 - I cloned my repository from Techgrounds and committed the changes in this exercise file.
