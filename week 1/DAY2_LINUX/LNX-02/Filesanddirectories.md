@@ -33,7 +33,7 @@
 
 
 ### Overcome challanges
-- I had to learn the different commands and initially it was confusing. But after trying multiple commands and after many attempts, I was able to understand it's function
+I had to learn the different commands and initially it was confusing. But after trying multiple commands and after many attempts, I was able to understand it's function
 
 ### Results
  Upon using the commands mentioned above, I was able to attain the below results.
