@@ -25,9 +25,9 @@
 ### Results
 I was eventually able to log in to the virtual machine to run Linux.
 
-![Settinguplinux](../00_includes/settinguplinux.png)
+![Settinguplinux](../00_includes/DAY2_LINUX/settinguplinux.png)
 
-![Settinguplinux2](../00_includes/settinguplinux2.png)
+![Settinguplinux2](../00_includes/DAY2_LINUX/settinguplinux2.png)
 
 
 
