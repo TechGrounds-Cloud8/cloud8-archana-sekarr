@@ -23,7 +23,7 @@
 
 
 ### Results
-I was eventually able to log in to the virtual machine to run Linux.
+I was eventually able to log in to the virtual machine.
 
 ![Settinguplinux](../00_includes/DAY2_LINUX/settinguplinux.png)
 
