@@ -28,6 +28,7 @@
 ### Sources
 - [Linux Commands](https://www.hostinger.com/tutorials/linux-commands)
 - [Linux Tutorial](https://www.w3cschoool.com/linux-tutorial)
+- [Linux Tutorial](https://www.tutorialspoint.com/unix/index.htm)
 - [Creating files](https://linuxize.com/post/create-a-file-in-linux/#:~:text=To%20create%20a%20new%20file%20run%20the%20cat%20command%20followed,D%20to%20save%20the%20files.)
 - [Linux paths](https://www.linux.com/training-tutorials/absolute-path-vs-relative-path-linuxunix/)
 
