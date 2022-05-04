@@ -19,7 +19,7 @@
 
 ### Overcome challanges
 - I learnt what is Linux, hypervisor, ssh key to understand about the secure authentication process
-- Initially I didnt use public key. Then with the help of my team members, I learnt that i had to use the public key file sent to us via email.
+- Initially I didnt use private key. Then with the help of my team members, I learnt that i had to use the private key file sent to us via email.
 
 
 ### Results

@@ -14,7 +14,7 @@
 - touch (create file)
 - echo - displaying a line of string/text
 - cat (print) - to read the file and print the content
-- grep - used to search for a string of characters in a specified line
+- grep - used to search for a string of characters 
 - pipe (|) to combine two or more commands at the same time
 - List (ls) to list files or directories
 - ls -1 (shows the list in a long list format)
