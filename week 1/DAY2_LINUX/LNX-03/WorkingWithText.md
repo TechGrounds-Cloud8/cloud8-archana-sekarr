@@ -1,36 +1,30 @@
-# LINUX Working With Text (CLI)
-- Everything in Linux is based on the file system
-- These files/folders in Linux are called as directories
-- Linux filesystem starts at the root directory  
-
+# LNX-03 Working With Text (CLI)
+- To work with different text operations using Linux Command Line Interface(CLI)
+- Linux operating system allows to change standard input and standard output when executing a command on the terminal. This function is called Input/Output redirection.
 
 ## Key terminology/commands used in LNX
-- cd (change directory)
-- pwd (print/current working directory)
-- cd .. (change directory to parent directory of the pwd)
-- root directory (/)
-- tilda ~ (to navigate to home directory)
 - mkdir (make directory)
 - touch (create file)
-- echo - displaying a line of string/text
-- cat (print) - to read the file and print the content
-- grep - used to search for a string of characters in a specified line
-- pipe (|) to combine two or more commands at the same time
-- List (ls) to list files or directories
-- ls -1 (shows the list in a long list format)
-- ls -a (long list of current directory incl. hidden files)
+- echo (print in terminal)
+- echo text > filename (print content to a file)
+- echo text >> filename (append newline to a file)
+- cat (print) - to read the file and print the content in terminal
+- grep (global regular expression print) - to search for a string of characters in a specified line
+- pipe (|) redirection used to send output of one program to another
 
 ## Exercise
 
 ### Sources
-- [Basics of SSH](https://www.youtube.com/watch?v=qWKK_PNHnnA&t=6s)
-- [Basics of SSH](https://www.youtube.com/watch?v=lRMAJwMQ0Vc)
+- [Grep command](https://stackoverflow.com/questions/4712521/filtering-linux-command-output)
+- [Input and output redirection](https://www.educative.io/edpresso/how-to-do-input-output-redirection-in-linux)
+- [Append an echo to file without overwriting](https://www.cyberciti.biz/faq/linux-append-text-to-end-of-file/)
 
 ### Overcome challanges
-- 
+- This assignment seemed to be a continuation of the previous one so it helped in understanding the commands better.
 
 ### Results
 
+By using the different commands, these were the results.
 
 ![LNX-03-ex1](../../../00_includes/DAY2_LINUX/LNX-03/LNX-03-ex1.png)
 
