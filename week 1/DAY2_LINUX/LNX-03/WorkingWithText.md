@@ -1,5 +1,5 @@
 # LNX-03 Working With Text (CLI)
-- To work with different text operations using Linux Command Line Interface(CLI)
+- Understanding the different text operations using Linux Command Line Interface(CLI)
 - Linux operating system allows to change standard input and standard output when executing a command on the terminal. This function is called Input/Output redirection.
 
 ## Key terminology/commands used in LNX
