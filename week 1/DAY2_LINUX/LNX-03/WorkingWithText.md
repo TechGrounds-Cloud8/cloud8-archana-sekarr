@@ -24,7 +24,7 @@
 
 ### Results
 
-By using the different commands, these were the results.
+By using the different text operations, these were the results.
 
 ![LNX-03-ex1](../../../00_includes/DAY2_LINUX/LNX-03/LNX-03-ex1.png)
 
