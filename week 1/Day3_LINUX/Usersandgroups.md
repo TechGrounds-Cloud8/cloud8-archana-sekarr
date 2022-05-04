@@ -45,10 +45,10 @@ I followed the following steps to achieve the result.
 ![LNX-04-03](../../../00_includes/DAY3_LINUX/LNX-04/LNX-04-03.png)
 
 4. Listing user twinkle
-[LNX-04-04](../../../00_includes/DAY3_LINUX/LNX-04/LNX-04-04.png)
+![LNX-04-04](../../../00_includes/DAY3_LINUX/LNX-04/LNX-04-04.png)
 
 5. Listing groups with user twinkle
-[LNX-04-05](../../../00_includes/DAY3_LINUX/LNX-04/LNX-04-05.png)
+![LNX-04-05](../../../00_includes/DAY3_LINUX/LNX-04/LNX-04-05.png)
 
 
 
