@@ -9,6 +9,7 @@ SSH(secure shell) is used to connect to remote Linux machines. To make this conn
 ## Key terminology
 - Init process - mother(parent) of all processes on the system. It is the first program that is executed when Linux system boots up; it manages all other processes on the system.
 - PID - process ID - every process has it's own PID
+- sudo apt install telnetd -y command: to install the telnet service (daemon)
 - ps command - it is used to locate a process. It displays information about the active processes on the system; though not in the form of an interface
 - pgrep PROCESSNAME - command used to retrieve PID based on the process name.
 - top command - displays list of all currently running processes along with it's memory usage 
