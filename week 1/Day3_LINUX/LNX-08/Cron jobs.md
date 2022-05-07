@@ -30,6 +30,8 @@ Cron is a time-based job scheduler in Unix. You can use Cron to schedule jobs, i
 
 - [how to check free disk space](https://opensource.com/article/18/7/how-check-free-disk-space-linux)
 
+- [how to schedule a cron command](https://crontab.guru/)
+
 - [To verify if crontab works](https://askubuntu.com/questions/85558/verify-if-crontab-works)
 
 
