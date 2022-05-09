@@ -60,7 +60,7 @@ The physical layer is the place where data is transmitted and received across th
 - [OSI Model Explained](https://www.youtube.com/watch?v=vv4y_uOneC0)
 - [OSI Model Explained with example](https://www.youtube.com/watch?v=LANW3m7UgWs)
 - [TCP/IP Model Explained](https://www.guru99.com/tcp-ip-model.html#:~:text=TCP%2FIP%20Model%20helps%20you,allow%20communication%20over%20large%20distances)
-- [OSI vs TCP model](file:///Users/sabarishkandasamysekar/Downloads/TCP_IP%20vs%20OSI%20Model_%20What%E2%80%99s%20the%20Difference_.html)
+- [OSI vs TCP model](file:///Users/sabarishkandasamysekar/Downloads/TCP_IP%20vs%20OSI%20Model_%20What%E2%80%99s%20the%20Difference_.html#7)
 
 
 ### Overcome challanges
