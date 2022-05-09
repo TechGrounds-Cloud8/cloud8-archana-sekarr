@@ -39,7 +39,6 @@ With DHCP, this entire process is automated and managed centrally. The DHCP serv
 - [DHCP server](https://docs.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-top)
 - [How to view the connected device information?](https://consumer.huawei.com/sa-en/support/content/en-us00728122/)
 - [How to access my home(KPN) router](https://forum.kpn.com/internet-9/inloggen-op-experia-box-v10a-506872#:~:text=Start%20een%20browser%20zoals%20Internet,een%20nieuw%20wachtwoord%20aangemaakt%20worden.)
-- [Network devices](https://blog.netwrix.com/2019/01/08/network-devices-explained/)
 
 ### Overcome challanges
 For exercise 2, To had to access my home router, I had to find my internet provider (KPN in this case), then based on the instructions from KPN, I learnt that i could access the router following this IP address ==> (http://192.168.2.254/ ).
