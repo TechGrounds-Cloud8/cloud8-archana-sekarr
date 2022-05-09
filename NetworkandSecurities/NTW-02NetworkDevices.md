@@ -53,11 +53,11 @@ For exercise 3, I learnt that I can get the DHCP server settings in the Admin pa
 
 - Other information about a connected device:
 
-![NTW-02NetworkDevices](../00_includes/NTW/NTW-02/i1.png)
+![NTW-02NetworkDevices](../00_includes/NTW/NTW-02/i2.png)
 
 - DHCP server and configurations:
 
-![NTW-02NetworkDevices](../00_includes/NTW/NTW-03/i1.png)
+![NTW-02NetworkDevices](../00_includes/NTW/NTW-02/i3.png)
 
 
 
