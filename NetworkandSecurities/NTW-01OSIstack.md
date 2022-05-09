@@ -33,7 +33,7 @@ This is the lowest layer of the OSI Model. It is concerned with electrically or 
 
 So as we send data, each layer will add it's own bit of information. This process is called encapsulation. When we hit the physical layer, the data is transmitted over to the receiving device. The receiving device then starts to decapsulate the data. Data from application layer has been segmented by transport layer; placed into packets by network layer; and framed by data link layer. 
 
-# TCP/IP Model# (TCP stands for Transmission Control Protocol and IP stands for Internet Protocol).
+# TCP/IP Model  (TCP stands for Transmission Control Protocol and IP stands for Internet Protocol).
 
 TCP/IP is used to standardize computer networking, even if the computers are from different manufacturers. It is a practical and concise version of the OSI model. It contains four layers, unlike seven layers in the OSI model. 
 
