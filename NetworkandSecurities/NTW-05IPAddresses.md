@@ -44,8 +44,6 @@ An IP address, or Internet Protocol address, is a series of numbers that identif
 - [What is NAT?](https://www.comptia.org/content/guides/what-is-network-address-translation)
 - [Public and private IPs](https://www.avast.com/c-ip-address-public-vs-private#:~:text=A%20public%20IP%20address%20identifies,a%20unique%20private%20IP%20address.)
 - [Static/Dynamic addresses](https://www.lifewire.com/what-is-a-dynamic-ip-address-2625857)
-- [Steps to find public IP address on laptop](https://setapp.com/how-to/find-ip-address-on-mac)
-
 
 ### Overcome challanges
 I had to understand what are IP addresses and how they work. I faced challenges in understanding questtions 5 and 6 and I need more learning to solve the problem because I don't see any significant change when I manually change the IP address in my phone.
