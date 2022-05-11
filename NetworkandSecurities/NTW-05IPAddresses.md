@@ -66,7 +66,7 @@ Public IP address of my PC and mobile:
 I found it out by logging in using admin access to my router (same as done in NTW-02). 
 
 4. Are the addresses the same or not? Explain why. 
-No, they are not the same. Every device in the internal network has been assigned a unique Private IP address so they can get connected to the public IP address.
+No, they are not the same. Every device in the local network has been assigned a unique Private IP address by the router which has the public IP address to connect to the internet.
 
 5. Change the private IP address of your mobile to that of your laptop. What happens then?
 Need to check
