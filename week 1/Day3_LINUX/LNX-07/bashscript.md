@@ -19,6 +19,7 @@ The shell provides conditions. You can use conditions in a shell script for deci
 - echo $NAME  - shows variables that are on the terminal
 - $NAME - reading the variable
 - PATH variable - It contains an ordered list of paths. It specifies the directories to be searched to find a command. Absolute path does not have to be specified when you run this command. The default systemwide PATH value is specified in the */etc/profile* file.
+- i(insert mode) in vi - to start typing text
 - exit -  to close vi
 - :wq - command is used to save the changes in vi
 - '=': to assign a variable

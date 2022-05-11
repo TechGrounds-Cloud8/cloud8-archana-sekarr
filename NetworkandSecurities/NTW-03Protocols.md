@@ -68,7 +68,7 @@ The first thing is to decide what layer your protocol is targeting. If you are t
 
 ![NTW-03Protocols](../00_includes/NTW/NTW-03/i3.png)
 
-Wireshark uses colors to help you identify the types of traffic at a glance. By default, green is TCP traffic, dark blue is DNS traffic, light blue is UDP traffic, and black identifies TCP packets with problems — for example, they could have been delivered out-of-order. To know more, refer the source link above to understand what the different colours mean in Wireshark.
+Wireshark uses colors to help you identify the types of traffic at a glance. By default, green is TCP traffic, dark blue is DNS traffic, light blue is UDP traffic, and black identifies TCP packets with problems — for example, they could have been delivered out-of-order. To know more, refer to the source link above to understand what the different colours mean in Wireshark.
 
 I am familiar with User Datagram Protocol (UPD) and I have learnt about it's working as explained in the Key terminologies column, above.
 
