@@ -12,6 +12,8 @@ Firewalls can either be software or hardware, though it’s best to have both. A
 
 - Established/listen port - Both are opened ports but one is waiting for a connection to be made while the other has a connection already made. In the following case, The HTTP protocol (typically port 80) is on LISTEN mode until somebody actually goes to the server. The moment somebody visits the page, then it will be in ESTABLISHED mode.
 
+- ufw - It is the default firewall tool for Ubuntu 
+
 - Packet-filtering firewalls - the most common type of firewall, examine packets and prohibit them from passing through if they don’t match an established security rule set. This type of firewall checks the packet’s source and destination IP addresses. If packets match those of an “allowed” rule on the firewall, then it is trusted to enter the network.
 Packet-filtering firewalls are divided into two categories: stateful and stateless.
 
