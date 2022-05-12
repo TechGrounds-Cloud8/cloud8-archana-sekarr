@@ -21,7 +21,6 @@ or sudo nmap -sn (IP address - scans the list of all the devices connected to th
 1. Scan the network of your Linux machine using nmap. What do you find?
 2. Open Wireshark in Windows/MacOS Machine. Analyse what happens when you open an internet browser. (Tip: you will find that Zoom is constantly sending packets over the network. You can either turn off Zoom for a minute, or look for the packets sent by the browser between the packets sent by Zoom.)
 
-
 ### Sources
 
 - [Network detection and response](https://www.vectra.ai/learning/ndr)
@@ -30,7 +29,7 @@ or sudo nmap -sn (IP address - scans the list of all the devices connected to th
 - [nmap on linux](https://www.howtoforge.com/tutorial/nmap-on-linux/)
 
 ### Overcome challanges
-I had to learn what is network detection and what are it's threats. I also learnt about nmap scanning.
+I had to learn what is network detection and how to face the threats. I also learnt about nmap scanning.
 
 ### Results
 
@@ -42,7 +41,7 @@ I had to learn what is network detection and what are it's threats. I also learn
 
 ![SEC-01-Networkdetection](../00_includes/SECURITIES/SEC-01/i2.png)
 
-- list of all the devices connected to the network using nmap 
+- list of all the devices connected to the network using nmap with different commands. 
 The output shows that 13 devices are connected to the network.
 
 ![SEC-01-Networkdetection](../00_includes/SECURITIES/SEC-01/i3.png)
@@ -57,4 +56,4 @@ The output shows that 13 devices are connected to the network.
 
 
 
-
+ 
