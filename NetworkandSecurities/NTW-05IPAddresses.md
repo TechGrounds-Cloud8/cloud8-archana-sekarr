@@ -74,7 +74,7 @@ In the above case, I noticed that while changing private IP address, there were 
 
 6. Try changing your mobile's private IP address to an address outside your network. What happens then?
 
-It was able to connect to outside the network to another public IP address but I was not able to access the internet. 
+I was able to connect to outside the network to another public IP address but I was not able to access the internet because there is no internet gateway to enable access.
 
 
 
