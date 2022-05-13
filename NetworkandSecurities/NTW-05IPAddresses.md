@@ -69,9 +69,12 @@ I found it out by logging in using admin access to my router (same as done in NT
 No, they are not the same. Every device in the local network has been assigned a unique Private IP address by the router which has the public IP address to connect to the internet.
 
 5. Change the private IP address of your mobile to that of your laptop. What happens then?
+
+In the above case, I noticed that while changing private IP address, there were some temporary network glitches with the web browsers I was accessing on my device similar to what happens when the wifi signal is lost for sometime because the router gets confused to which device the packet information should be sent within the network.
+
 6. Try changing your mobile's private IP address to an address outside your network. What happens then?
 
-In the above cases, I noticed that while changing private IP address, there were some temporary network glitches with the web browsers I was accessing on my device similar to what happens when the wifi signal is lost for sometime. 
+It was able to connect to outside the network to another public IP address but I was not able to access the internet. 
 
 
 
