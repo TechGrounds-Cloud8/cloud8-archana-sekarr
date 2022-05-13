@@ -121,7 +121,7 @@ Based on the number of hosts required for each subn, I used different cidr prefi
 
 - Creating network architure using same cidr prefix:
 
-According to my understanding, we can adapt different strategies while creating subnets. In the network architecture 2 shown below; I tried to experiment using the same cidr prefix ( /26)  so that I get 4 subnets with 64 ip address in each of them.
+According to my understanding, we can adapt different strategies while creating subnets. In the network architecture 2 shown below; I tried to experiment using the same cidr prefix ( /26)  so that I get 4 subnets with 64 ip addresses in each of them.
 
 ![NTW-06Subnetting](../00_includes/NTW/NTW-06/i6.png)
 
