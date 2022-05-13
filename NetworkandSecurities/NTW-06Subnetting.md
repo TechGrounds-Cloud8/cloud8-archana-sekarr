@@ -11,6 +11,7 @@ When a network receives data packets from another network, it will sort and rout
 For example, a 20-bit subnet mask would be represented as 
 255.255.240.0:
 Subnet mask: 11111111 11111111 11110000 00000000
+
 255 . 255 . 240 . 0
 
 Few restrictions placed on subnet mask are:
