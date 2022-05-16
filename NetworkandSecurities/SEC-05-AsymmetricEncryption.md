@@ -26,7 +26,7 @@ You are not allowed to use any private messages or other communication channels 
 
 ### Overcome challanges
 
-1.
+I had to learn how asymmetric encryption works and understand how to generate keys using a key pair generator.
 ### Results
 
 1. These are the steps i followed to send an asymmetric encrypted message to my teammate.  
