@@ -25,9 +25,9 @@
 ### Results
 I was eventually able to log in to the virtual machine.
 
-![Settinguplinux](../../../00_includes/DAY2_LINUX/LNX-01-ex1.png)
+![Settinguplinux](../../../00_includes/DAY2_LINUX/LNX-01/LNX-01-ex1.png)
 
-![Settinguplinux2](../../../00_includes/DAY2_LINUX/LNX-01-ex2.png)
+![Settinguplinux2](../../../00_includes/DAY2_LINUX/LNX-01/LNX-01-ex2.png)
 
 
 
