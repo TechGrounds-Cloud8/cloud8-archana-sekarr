@@ -1,9 +1,11 @@
 # Protocols
+
 A network protocol is an established set of rules that determine how data is transmitted between different devices in the same network; like an agreement about how to communicate. Every layer of the OSI stack follows a specific protocol. 
 
 Similar to the way that speaking the same language simplifies communication between two people, network protocols make it possible for devices to interact with each other because of predetermined rules built into devices’ software and hardware.  
 
 ## Key Terminology
+
 - Protocol suite - a set of smaller network protocols working in conjunction with each other.
 
 - Troubleshooting protocol - allows network administrators to identify errors affecting the network, evaluate the quality of the network connection, and determine how administrators can fix any issues.

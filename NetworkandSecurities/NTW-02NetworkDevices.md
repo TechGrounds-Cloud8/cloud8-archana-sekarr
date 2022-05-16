@@ -34,6 +34,7 @@ With DHCP, this entire process is automated and managed centrally. The DHCP serv
 3. Where is your DHCP server located on your network? What are the configurations of this?
 
 ### Sources
+
 - [Network devices](https://blog.netwrix.com/2019/01/08/network-devices-explained/)
 - [Network Devices Explained](https://www.youtube.com/watch?v=eMamgWllRFY)
 - [DHCP server](https://docs.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-top)
@@ -41,6 +42,7 @@ With DHCP, this entire process is automated and managed centrally. The DHCP serv
 - [How to access my home(KPN) router](https://forum.kpn.com/internet-9/inloggen-op-experia-box-v10a-506872#:~:text=Start%20een%20browser%20zoals%20Internet,een%20nieuw%20wachtwoord%20aangemaakt%20worden.)
 
 ### Overcome challanges
+
 For exercise 2, To had to access my home router, I had to find my internet provider (KPN in this case), then based on the instructions from KPN, I learnt that i could access the router following this IP address ==> (http://192.168.2.254/ ).
 
 For exercise 3, I learnt that I can get the DHCP server settings in the Admin page of my home router.
