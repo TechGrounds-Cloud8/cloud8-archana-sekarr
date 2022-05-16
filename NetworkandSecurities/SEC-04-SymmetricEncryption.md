@@ -1,93 +1,95 @@
-# Firewalls
+# Symmetric Encryption  
 
-A firewall is a network security device that monitors incoming and outgoing network traffic and permits or blocks data packets based on a set of security rules. Its purpose is to establish a barrier between your internal network and incoming traffic from external sources (such as the internet) in order to block malicious traffic like viruses and hackers. Firewalls filter network traffic. A firewall can filter this traffic by protocol, port number, source and destination of a packet.
-
-Types of firewalls:
-
-Firewalls can either be software or hardware, though it’s best to have both. A software firewall is a program installed on each computer and regulates traffic through port numbers and applications, while a physical firewall is a piece of equipment installed between your network and gateway.
+This exercise helps in understanding what is encryption and the basis of cryptography followed by symmetric encryption.
 
 ## Key terminology
 
-- port - Firewalls guard traffic at a computer’s entry point, called ports, which is where information is exchanged with external devices. The state of a port is either open, filtered, closed, or unfiltered. A port is said to be open if an application on the target machine is listening for connections/packets on that port.
+- Cryptography - Cryptography is the science of concealing messages using secret codes. The objective of cryptography is to provide methods to protect information and secure communications through encryption and related techniques. So, cryptography is the study of concepts like encryption, whereas encryption is a technique used to conceal messages using algorithms.
 
-- Established/listen port - Both are opened ports but one is waiting for a connection to be made while the other has a connection already made. In the following case, The HTTP protocol (typically port 80) is on LISTEN mode until somebody actually goes to the server. The moment somebody visits the page, then it will be in ESTABLISHED mode.
+- Encryption - Encryption is a fundamental application of cryptography which encodes a message with an algorithm. Encryption uses an algorithm to encrypt the data and a secret key to decrypt it. It is a way of scrambling data so that only authorized parties can understand the information. Encryption scrambles plain text into a type of secret code that hackers, cybercriminals, and other online snoops can't read, even if they intercept it before it reaches its intended recipients. When the message does get to its recipients, they have their own key to unscramble the information back into plain, readable text. 
 
-- ufw - It is the default firewall tool for Ubuntu 
+- Encryption key - An encryption key is a series of numbers used to encrypt and decrypt data. Encryption keys are created with algorithms. Each key is random and unique. 
 
-- Packet-filtering firewalls - the most common type of firewall, examine packets and prohibit them from passing through if they don’t match an established security rule set. This type of firewall checks the packet’s source and destination IP addresses. If packets match those of an “allowed” rule on the firewall, then it is trusted to enter the network.
-Packet-filtering firewalls are divided into two categories: stateful and stateless.
+- ciphertext - Encryption takes plain text, like a text message or email, and scrambles it into an unreadable format — called “cipher text.” In other words, it is the process of converting human-readable plaintext to incomprehensible text. This helps protect the confidentiality of digital data either stored on computer systems or transmitted  through a network like the Internet. 
 
-- Stateless firewalls - Stateless firewalls examine packets independently of one another and lack context, making them easy targets for hackers.
+- Decryption - When the intended recipient accesses the message, the information is translated back to its original form. This is called decryption. To unlock the message, both the sender and the recipient have to use a “secret” encryption key.
 
-- Stateful firewalls - In contrast, stateful firewalls remember information about previously passed packets and are considered much more secure.
+- Symmetric encryption - Symmetric encryption uses a single password to encrypt and decrypt data. So, there is only one key, and all communicating parties use the same (secret) key for both encryption and decryption.       
 
-- sudo nmap -n -PN -sT -sU -p- localhost or sudo nmap -sT -O localhost - Either of these commands can be used to find the unique port number for http traffic.
+- Caesar cipher - The Caesar Cipher technique is one of the earliest and simplest method of encryption technique. It’s simply a type of substitution cipher, i.e., each letter of a given text is replaced by a letter some fixed number of positions down the alphabet. For example with a shift of 1, A would be replaced by B, B would become C, and so on. The method is apparently named after Julius Caesar, who apparently used it to communicate with his officials. Thus to cipher a given text we need an integer value, known as shift which indicates the number of position each letter of the text has been moved down. 
+The encryption can be represented using modular arithmetic by first transforming the letters into numbers, according to the scheme, A = 0, B = 1,…, Z = 25. Encryption of a letter by a shift n can be described mathematically as. 
 
-- sudo systemctl status apache2 - To check the status of apache2, whether it is active and running.
+![SEC-04-SymmetricEncryption](../00_includes/SECURITIES/SEC-04/i1.png)
+
+
+- Monoalphabetic Ciphers - A cipher that uses a single alphabet and is usually a simple transposition. For example, the the letter A will be represented by the letter F. These are easily cracked. Caesar cipher is an example of Monoalphabetic cipher.
+
+- Polyalphabetic Ciphers - This is a transpositional cipher, but unlike the monoalphabetic ciphers, more than one alphabet is used. Polyalphabetic ciphers allow the use of many alphabets during encryption, which greatly increases the key space of the ciphertext. There are signals embedded in the ciphertext which tell the recipient when the alphabet has changed. Some examples of Polyalphabetic ciphers are Alberti cipher and Vigenère cipher
 
 ### Exercise
 
-1. Install a web server on your VM.
+1. Find two more historic ciphers besides the Caesar cipher.
+2. Find two digital ciphers that are being used today.
+3. Send a symmetrically encrypted message to one of your peers via the public Slack channel. They should be able to decrypt the message using a key you share with them. Try to think of a way to share this encryption key without revealing it to everyone. 
+You are not allowed to use any private messages or other communication channels besides Slack. Analyse the shortcomings of this method.
 
-2. View the default page installed with the web server.
-
-3. Set the firewall to block web traffic, but allow ssh traffic.
-
-4. Check if the firewall is doing its job.
 ### Sources
 
-- [Firewalls explained](https://www.forcepoint.com/cyber-edu/firewall)
+- [Encryption explained](https://us.norton.com/internetsecurity-privacy-what-is-encryption.html)
 
-- [Finding listening ports in linux](https://www.tecmint.com/find-listening-ports-linux/)
+- [Encryption and cryptography](http://www.differencebetween.net/technology/difference-between-encryption-and-cryptography/)
 
-- [Finding open ports in linux using nmap](https://www.linuxandubuntu.com/home/what-are-ports-how-to-find-open-ports-in-linux)
+- [Caesar cipher](https://www.geeksforgeeks.org/caesar-cipher-in-cryptography/)
 
-- [Installing apache](https://ubuntu.com/tutorials/install-and-configure-apache#2-installing-apache)
+- [Famous codes and ciphers through history and their role in modern encryption](https://www.comparitech.com/blog/information-security/famous-codes-and-ciphers-through-history-and-their-role-in-modern-encryption/#:~:text=Vigen%C3%A8re%20%E2%80%93%201553&text=This%20is%20one%20of%20the,use%20for%20over%20three%20centuries.)
 
-- [FAllow or deny a port UFW](https://my.esecuredata.com/index.php?/knowledgebase/article/7/allow-or-deny-a-port-ufw-ubuntu)
+- [Advanced Encryption Standard (AES)](https://www.geeksforgeeks.org/advanced-encryption-standard-aes/)
+
+- [Public Key Cryptography - Computerphile](https://www.youtube.com/watch?v=GSIDS_lvRv4)
+
 
 ### Overcome challanges
 
-1. I had to learn what are firewalls and the different types of ports.
+1. I had to learn the meaning of cryption, encryption and different types to understand how the process works.
 
-2. Then while trying to view the default page installed with the web server, I realized that I had to use the web port number to use web applications instead of the SSH-port to check if it's working.
+2. I also learnt some of the interesting methods of encryption used in the past and present.
 
-3. I also learnt that I had to deny port 80 for tcp protocol which is the unique port number for http traffic instead of port 80 to block web traffic. 
 ### Results
 
-1. Install a web server on your VM and 2. View the default page installed with the web server.
+1.  Some more historic ciphers used in olden times:
 
-- Finding my unique port number for http traffic:
+- Vigenère – 1553 - 
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i1.png)
+Originally described by Giovan Bellaso in 1553, the Vigenère cipher has been recreated a few times, most recently by Blaise de Vigenère in the 19th century. This is one of the first polyalphabetic ciphers. It is still symmetrical in nature, but it was tough enough to crack that it remained in use for over three centuries.
 
-- Apache2 was installed earlier so to check the status of already installed Apache2, I followed the path below:
+Polyalphabetic ciphers allow the use of many alphabets during encryption, which greatly increases the key space of the ciphertext. Earlier versions of polyalphabetic ciphers required rigid adherence to the spots at which the alphabet would change. Bellaso’s implementation of this cipher allowed the sender to change alphabets at arbitrary spots in the encryption process. The signal of an alphabet change had to be agreed upon in advance between the sender and receiver, therefore this is still a symmetrical method of encryption.
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i2.png)
+- One time pads (OTP) – 1882
 
-- Viewing the Apache2 server's default page hosted on my virtual machine with web browser. It shows Apache2 server works on my local machine:
+A One Time Pad (OTP) refers to a symmetric encryption system using keys that are changed with every single message. If the keys truly are one time, then ciphertext would be extremely resistant to cryptanalysis. These keys were literally written on pads of paper originally and since each key is only used once, the name One Time Pad stuck.
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i3.png)
+In practice, OTP is hard to deploy properly. As a symmetrical system, it requires the sender and all the recipients to have the same OTP book. It also has a significant disadvantage in that a message cannot be longer than the pad in use. If it were, then parts of the pad would have to be re-used, which significantly weakens the ciphertext to cryptanalysis. OTPs are still in use today in some militaries for quick, tactical field messages.
 
-3. Set the firewall to block web traffic, but allow ssh traffic.
+- Engima – 1914
 
-- Enabling firewall:
+Created by German citizen Arthur Scherbius after WW1 for commercial purposes, the Enigma machine is a polyalphabetic stream cipher machine. The machine consisted of a keyboard, a light panel and some adjustable rotors. Operators would set the position of the rotors and then type a message on the keypad. As each letter was typed, a corresponding letter would illuminate on the light pad. This was the encrypted letter that formed the ciphertext. Receivers would have to know the correct rotors settings to use, and then they perform the same process. However, as the receiver typed in each letter of ciphertext, the corresponding letter that would illuminate would be the plaintext letter.
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i4.png)
+2. Two digital ciphers that are being widely used today:
 
-- Denying port 80 for tcp protocol:
+- The Advanced Encryption System (AES)
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i5.png)
+It is the current encryption standard for most government and private sector IT security purposes. AES uses a symmetric algorithm, which means the same key is applied for both encryption and decryption. AES is a block cipher. The algorithm provides 128-bit block encryption and has been designed to supports key sizes of 128, 192 and 256 bits. AES 256-bit encryption is the strongest and most robust encryption standard that is commercially available today. While it is theoretically true that AES 256-bit encryption is harder to crack than AES 128-bit encryption, AES 128-bit encryption has never been cracked.
 
-- fire wall status after denying port 80:
+- RSA (Rivest, Shamir, Adleman) 
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i6.png)
+The Rivest-Shamir-Adleman (RSA) encryption algorithm is an asymmetric encryption algorithm that is widely used in many products and services. Asymmetric encryption uses a key pair that is mathematically linked to encrypt and decrypt data. A private and public key are created, with the public key being accessible to anyone and the private key being a secret known only by the key pair creator. With RSA, either the private or public key can encrypt the data, while the other key decrypts it. This is one of the reasons RSA is the most used asymmetric encryption algorithm.
 
-4. Check if the firewall is doing its job.
-Yes, the connection was timed out after blocking the port in firewall as shown below:
+- Public Key Cryptography
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i7.png)
+Public Key Cryptography is an asymmetrical system in wide use today by people and computers alike. The key used to encrypt data but not decrypt it is called the public key. Every recipient has their own public key which is made widely available. Senders must use the public key of the intended recipient to encode the message. Then the recipient can use their companion secret key called the private key to decrypt the message. RSA is the underlying cipher used in Public Key cryptography. 
 
+
+3. Symmetric encryption calls for  giving the key to decrypt a message in person with a piece of paper. This was practised in olden times and it's not a secure method. This exercise asks for sharing the key in a public channel which may increase the possibility for anyone to decrypt the message in the group to decrypt the message if they knew the username. So this is not a ideal way to share an encrypted message. 
 
 
 

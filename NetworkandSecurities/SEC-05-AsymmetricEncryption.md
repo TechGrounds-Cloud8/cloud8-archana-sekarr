@@ -1,92 +1,45 @@
-# Firewalls
+# Asymmetric encryption
 
-A firewall is a network security device that monitors incoming and outgoing network traffic and permits or blocks data packets based on a set of security rules. Its purpose is to establish a barrier between your internal network and incoming traffic from external sources (such as the internet) in order to block malicious traffic like viruses and hackers. Firewalls filter network traffic. A firewall can filter this traffic by protocol, port number, source and destination of a packet.
-
-Types of firewalls:
-
-Firewalls can either be software or hardware, though it’s best to have both. A software firewall is a program installed on each computer and regulates traffic through port numbers and applications, while a physical firewall is a piece of equipment installed between your network and gateway.
+Asymmetric Encryption uses two distinct, yet related keys. One key, the Public Key, is used for encryption and the other, the Private Key, is for decryption. As implied in the name, the Private Key is intended to be private so that only the authenticated recipient can decrypt the message whereas the public key may be known to others. The main difference between a symmetric encryption and asymmetric encryption is that asymmetric encryption consists of a public and private key; where the private key does not have to be shared with anyone and only the public key is shared to encrypt the message. This eliminates security threats. 
 
 ## Key terminology
 
-- port - Firewalls guard traffic at a computer’s entry point, called ports, which is where information is exchanged with external devices. The state of a port is either open, filtered, closed, or unfiltered. A port is said to be open if an application on the target machine is listening for connections/packets on that port.
-
-- Established/listen port - Both are opened ports but one is waiting for a connection to be made while the other has a connection already made. In the following case, The HTTP protocol (typically port 80) is on LISTEN mode until somebody actually goes to the server. The moment somebody visits the page, then it will be in ESTABLISHED mode.
-
-- ufw - It is the default firewall tool for Ubuntu 
-
-- Packet-filtering firewalls - the most common type of firewall, examine packets and prohibit them from passing through if they don’t match an established security rule set. This type of firewall checks the packet’s source and destination IP addresses. If packets match those of an “allowed” rule on the firewall, then it is trusted to enter the network.
-Packet-filtering firewalls are divided into two categories: stateful and stateless.
-
-- Stateless firewalls - Stateless firewalls examine packets independently of one another and lack context, making them easy targets for hackers.
-
-- Stateful firewalls - In contrast, stateful firewalls remember information about previously passed packets and are considered much more secure.
-
-- sudo nmap -n -PN -sT -sU -p- localhost or sudo nmap -sT -O localhost - Either of these commands can be used to find the unique port number for http traffic.
-
-- sudo systemctl status apache2 - To check the status of apache2, whether it is active and running.
-
+Explained above.
 ### Exercise
 
-1. Install a web server on your VM.
+1. Generate a key pair.
 
-2. View the default page installed with the web server.
+2. Send an asymmetrically encrypted message to one of your peers via the public Slack channel. They should be able to decrypt the message using a key you share with them. The recipient should be able to read the message, but it should remain a secret to everyone else.
+You are not allowed to use any private messages or other communication channels besides Slack. Analyse the difference between this method and symmetric encryption.
 
-3. Set the firewall to block web traffic, but allow ssh traffic.
-
-4. Check if the firewall is doing its job.
 ### Sources
 
-- [Firewalls explained](https://www.forcepoint.com/cyber-edu/firewall)
+- [Asymmetric Encryption](https://cheapsslsecurity.com/blog/what-is-asymmetric-encryption-understand-with-simple-examples/)
 
-- [Finding listening ports in linux](https://www.tecmint.com/find-listening-ports-linux/)
+- [Online RSA Key Generator](https://travistidwell.com/jsencrypt/demo/)
 
-- [Finding open ports in linux using nmap](https://www.linuxandubuntu.com/home/what-are-ports-how-to-find-open-ports-in-linux)
+- [Public Key Cryptography - Computerphile](https://www.youtube.com/watch?v=GSIDS_lvRv4)
 
-- [Installing apache](https://ubuntu.com/tutorials/install-and-configure-apache#2-installing-apache)
+- [Pubic key encryption explained](https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/)
 
 - [FAllow or deny a port UFW](https://my.esecuredata.com/index.php?/knowledgebase/article/7/allow-or-deny-a-port-ufw-ubuntu)
 
 ### Overcome challanges
 
-1. I had to learn what are firewalls and the different types of ports.
-
-2. Then while trying to view the default page installed with the web server, I realized that I had to use the web port number to use web applications instead of the SSH-port to check if it's working.
-
-3. I also learnt that I had to deny port 80 for tcp protocol which is the unique port number for http traffic instead of port 80 to block web traffic. 
+1.
 ### Results
 
-1. Install a web server on your VM and 2. View the default page installed with the web server.
+1. These are the steps i followed to send an asymmetric encrypted message to my teammate.  
 
-- Finding my unique port number for http traffic:
+My teammate Abd, shared his public key with me on a public channel(Slack). Using this public key, I encrypted my message and shared it with him again on Slack. Then Abd, decrypted my message for him on his computer.  
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i1.png)
+In asymmetric method, both the sender and the recipient uses the same key pairs; but we use our own private keys. Since i encrypted my message based on my private key and Abd's public key, he was able to encrypt the message with his private key and my public key. Despite posting it in a public channel like slack, none of my teammates could guess because others dont know the private keys we used to decrypt it.
 
-- Apache2 was installed earlier so to check the status of already installed Apache2, I followed the path below:
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i2.png)
+![SEC-05-AsymmetricEncryption](../00_includes/SECURITIES/SEC-05/i1.png)
 
-- Viewing the Apache2 server's default page hosted on my virtual machine with web browser. It shows Apache2 server works on my local machine:
+![SEC-05-AsymmetricEncryption](../00_includes/SECURITIES/SEC-05/i2.png)
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i3.png)
-
-3. Set the firewall to block web traffic, but allow ssh traffic.
-
-- Enabling firewall:
-
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i4.png)
-
-- Denying port 80 for tcp protocol:
-
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i5.png)
-
-- fire wall status after denying port 80:
-
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i6.png)
-
-4. Check if the firewall is doing its job.
-Yes, the connection was timed out after blocking the port in firewall as shown below:
-
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i7.png)
 
 
 
