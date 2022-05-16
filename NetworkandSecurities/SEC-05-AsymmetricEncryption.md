@@ -33,7 +33,7 @@ You are not allowed to use any private messages or other communication channels 
 
 My teammate Abd, shared his public key with me on a public channel(Slack). Using this public key, I encrypted my message and shared it with him again on Slack. Then Abd, decrypted my message for him on his computer.  
 
-In asymmetric method, both the sender and the recipient uses the same key pairs; but we use our own private keys. Since i encrypted my message based on my private key and Abd's public key, he was able to encrypt the message with his private key and my public key. Despite posting it in a public channel like slack, none of my teammates could guess because others dont know the private keys we used to decrypt it.
+Since I encrypted my message based on my private key and Abd's public key, he was able to encrypt the message with his private key and my public key. Despite posting it in a public channel like slack, none of my teammates could guess because others dont know the private keys we used to decrypt it.
 
 
 ![SEC-05-AsymmetricEncryption](../00_includes/SECURITIES/SEC-05/i1.png)
