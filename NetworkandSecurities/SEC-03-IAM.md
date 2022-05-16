@@ -4,7 +4,7 @@ This exercise is learning about IAM, Authentication and Authorization and unders
 
 Identity and Access Management (IAM):
 
-This concept ensures that the right people and entities with digital identities have the right level of access to business resources, such as networks and databases. User roles and access rights are defined and managed via an IAM system. With an IAM solution, IT administrators can securely and effectively manage users' digital identities and related access rights. Administrators can set and customize user roles, track and report user activity, and enforce corporate and regulatory compliance policies to ensure data security and privacy.
+This ensures that the right people and entities with digital identities have the right level of access to business resources, such as networks and databases. User roles and access rights are defined and managed via an IAM system. With an IAM solution, IT administrators can securely and effectively manage users' digital identities and related access rights. Administrators can set and customize user roles, track and report user activity, and enforce corporate and regulatory compliance policies to ensure data security and privacy.
 
 ## Key terminology
 
