@@ -22,8 +22,6 @@ You are not allowed to use any private messages or other communication channels 
 
 - [Pubic key encryption explained](https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/)
 
-- [FAllow or deny a port UFW](https://my.esecuredata.com/index.php?/knowledgebase/article/7/allow-or-deny-a-port-ufw-ubuntu)
-
 ### Overcome challanges
 
 I had to learn how asymmetric encryption works and understand how to generate keys using a key pair generator.
