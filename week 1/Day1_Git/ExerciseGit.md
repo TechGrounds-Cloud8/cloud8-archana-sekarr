@@ -45,8 +45,8 @@ I had to familiarize with Git and github concepts inorder to understand what val
 - I created a private repository and shared it with my teammates(collaborators)
   ![collaborators](../../../00_includes/Day1_Git_Markdown/addingAccessToCollaborators.png)
 - I added a commit to the private repository
-  ![private repo](../../../00_includes/Day1_Git_Markdown/CloneARepositoryFromGithub.png)
+  ![private repo](../../../00_includes/Day1_Git_Markdown/CommitToPrivateRepository.png)
 - I cloned the repository created by my teammate Ben 
- ![Cloning](../../../00_includes/Day1_Git_Markdown/CommitToPrivateRepository.png)
+ ![Cloning](../../../00_includes/Day1_Git_Markdown/CloneARepositoryFromGithub.png)
 - I cloned my repository from Techgrounds and committed the changes in this exercise file.
 
