@@ -8,6 +8,14 @@ I learnt what PKI is and how the certification works.
 
 In cryptography, a PKI is an arrangement that binds public keys with respective identities of entities (like people and organizations). The binding is established through a process of registration and issuance of certificates at and by a certificate authority (CA). Depending on the assurance level of the binding, this may be carried out by an automated process or under human supervision.
 
+PKI consists of three entities also known as CIA:
+
+Confidentiality: Assurance that no entity can maliciously or unwittingly view a payload in clear text. Data is encrypted to make it secret, such that even if it was read, it appears as gibberish. Perhaps the most common use of PKI for confidentiality purposes is in the context of Transport Layer Security (TLS). TLS is a capability underpinning the security of data in transit, i.e. during transmission. A classic example of TLS for confidentiality is when using an internet browser to log on to a service hosted on an internet based web site by entering a password.
+
+Integrity: Assurance that if an entity changed (tampered) with transmitted data in the slightest way, it would be obvious it happened as its integrity would have been compromised. Often it is not of utmost importance to prevent the integrity being compromised (tamper proof), however, it is of utmost importance that if integrity is compromised there is clear evidence of it having done so (tamper evident).
+
+Authenticity: Assurance that you have certainty of what you are connecting to, or evidencing your legitimacy when connecting to a protected service. The former is termed server-side authentication - typically used when authenticating to a web server using a password. The latter is termed client-side authentication - sometimes used when authenticating using a smart card (hosting a digital certificate and private key).
+
 - Certificate authority (CA) - It is an entity that stores, signs, and issues digital certificates. A digital certificate certifies the ownership of a public key by the named subject of the certificate. This allows others (relying parties) to rely upon signatures or on assertions made about the private key that corresponds to the certified public key. A CA acts as a trusted third party—trusted both by the subject (owner) of the certificate and by the party relying upon the certificate. The format of these certificates is specified by the X.509 or EMV standard.
 
 One particularly common use for certificate authorities is to sign certificates used in HTTPS, the secure browsing protocol for the World Wide Web.
@@ -19,6 +27,7 @@ One particularly common use for certificate authorities is to sign certificates 
 ![SEC-06-PublicKeyInfrastructure](../00_includes/SECURITIES/SEC-06/i2.png)
 
 - Self-Signed SSL Certificate - A self-signed SSL certificate is a certificate that is signed by the person who created it rather than a trusted certificate authority. Self-signed certificates can have the same level of encryption as the trusted CA-signed SSL certificate. Web browsers do not recognize the self-signed certificates as valid. When using a self-signed certificate, the web browser shows a warning to the visitor that the web site certificate cannot be verified. Typically, the self-signed certificates are used for testing purposes or internal usage. You should not use a self-signed certificate in production systems that are exposed to the Internet.
+
 ### Exercise
 
 1. Create a self-signed certificate on your VM.
@@ -30,6 +39,8 @@ One particularly common use for certificate authorities is to sign certificates 
 ### Sources
 
 - [What is Public Key Infrastructure (PKI)](https://www.youtube.com/watch?v=i-rtxrEz_E8) ----> Great resource for learning how PKI works! (suggested by a teammate)
+
+- [PKI explained](https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
 - [PKI explained](https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
