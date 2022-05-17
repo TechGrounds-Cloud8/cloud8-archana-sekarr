@@ -26,7 +26,7 @@ One particularly common use for certificate authorities is to sign certificates 
 
 ![SEC-06-PublicKeyInfrastructure](../00_includes/SECURITIES/SEC-06/i2.png)
 
-- Self-Signed SSL Certificate - A self-signed SSL certificate is a certificate that is signed by the person who created it rather than a trusted certificate authority. Self-signed certificates can have the same level of encryption as the trusted CA-signed SSL certificate. Web browsers do not recognize the self-signed certificates as valid. When using a self-signed certificate, the web browser shows a warning to the visitor that the web site certificate cannot be verified. Typically, the self-signed certificates are used for testing purposes or internal usage. You should not use a self-signed certificate in production systems that are exposed to the Internet.
+- Self-Signed SSL Certificate - A self-signed SSL certificate is a certificate that is signed by the person who created it rather than a trusted certificate authority. Self-signed certificates can have the same level of encryption as the trusted CA-signed SSL certificate. You don't have to rely on a third party or rather pay for a certificate from a CA. Although, Web browsers do not recognize the self-signed certificates as valid. When using a self-signed certificate, the web browser shows a warning to the visitor that the web site certificate cannot be verified. Typically, the self-signed certificates are used for testing purposes or internal usage. You should not use a self-signed certificate in production systems that are exposed to the Internet.
 
 ### Exercise
 
@@ -51,6 +51,8 @@ One particularly common use for certificate authorities is to sign certificates 
 - [How to create a self-signed SSL certificate](https://linuxize.com/post/creating-a-self-signed-ssl-certificate/)
 
 - [How to create a self-signed SSL certificate - shorter command](https://websiteforstudents.com/how-to-create-self-signed-certificates-on-ubuntu-linux/)
+
+- [How to create a self-signed certificate using OpenSSL](https://linuxize.com/post/creating-a-self-signed-ssl-certificate/)
 
 - [How Can I Tell if a Site Has SSL?](https://www.venafi.com/education-center/ssl/how-to-check-ssl-certificate#:~:text=For%20most%20browsers%2C%20look%20to,to%20view%20the%20certificate%20information)
 
