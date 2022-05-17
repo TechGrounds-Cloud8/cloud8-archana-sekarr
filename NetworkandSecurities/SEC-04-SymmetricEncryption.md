@@ -50,7 +50,7 @@ You are not allowed to use any private messages or other communication channels 
 
 ### Overcome challanges
 
-1. I had to learn the meaning of cryption, encryption and different types to understand how the process works.
+1. I had to learn the meaning of cryptography, encryption and different types to understand how the process works.
 
 2. I also learnt some of the interesting methods of encryption used in the past and present.
 

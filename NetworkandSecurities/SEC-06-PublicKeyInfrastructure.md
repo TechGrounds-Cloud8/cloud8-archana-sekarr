@@ -1,95 +1,80 @@
-# Firewalls
+# Public Key Infrastructure (PKI)
 
-A firewall is a network security device that monitors incoming and outgoing network traffic and permits or blocks data packets based on a set of security rules. Its purpose is to establish a barrier between your internal network and incoming traffic from external sources (such as the internet) in order to block malicious traffic like viruses and hackers. Firewalls filter network traffic. A firewall can filter this traffic by protocol, port number, source and destination of a packet.
-
-Types of firewalls:
-
-Firewalls can either be software or hardware, though it’s best to have both. A software firewall is a program installed on each computer and regulates traffic through port numbers and applications, while a physical firewall is a piece of equipment installed between your network and gateway.
+I learnt what PKI is and how the certification works.
 
 ## Key terminology
 
-- port - Firewalls guard traffic at a computer’s entry point, called ports, which is where information is exchanged with external devices. The state of a port is either open, filtered, closed, or unfiltered. A port is said to be open if an application on the target machine is listening for connections/packets on that port.
+- Public key infrastructure (PKI) - A public key infrastructure (PKI) is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. The purpose of a PKI is to facilitate the secure electronic transfer of information for a range of network activities such as e-commerce, internet banking and confidential email. It is required for activities where simple passwords are an inadequate authentication method and more rigorous proof is required to confirm the identity of the parties involved in the communication and to validate the information being transferred.
 
-- Established/listen port - Both are opened ports but one is waiting for a connection to be made while the other has a connection already made. In the following case, The HTTP protocol (typically port 80) is on LISTEN mode until somebody actually goes to the server. The moment somebody visits the page, then it will be in ESTABLISHED mode.
+In cryptography, a PKI is an arrangement that binds public keys with respective identities of entities (like people and organizations). The binding is established through a process of registration and issuance of certificates at and by a certificate authority (CA). Depending on the assurance level of the binding, this may be carried out by an automated process or under human supervision.
 
-- ufw - It is the default firewall tool for Ubuntu 
+- Certificate authority (CA) - It is an entity that stores, signs, and issues digital certificates. A digital certificate certifies the ownership of a public key by the named subject of the certificate. This allows others (relying parties) to rely upon signatures or on assertions made about the private key that corresponds to the certified public key. A CA acts as a trusted third party—trusted both by the subject (owner) of the certificate and by the party relying upon the certificate. The format of these certificates is specified by the X.509 or EMV standard.
 
-- Packet-filtering firewalls - the most common type of firewall, examine packets and prohibit them from passing through if they don’t match an established security rule set. This type of firewall checks the packet’s source and destination IP addresses. If packets match those of an “allowed” rule on the firewall, then it is trusted to enter the network.
-Packet-filtering firewalls are divided into two categories: stateful and stateless.
+One particularly common use for certificate authorities is to sign certificates used in HTTPS, the secure browsing protocol for the World Wide Web.
 
-- Stateless firewalls - Stateless firewalls examine packets independently of one another and lack context, making them easy targets for hackers.
+![SEC-06-PublicKeyInfrastructure](../00_includes/SECURITIES/SEC-06/i1.png)
 
-- Stateful firewalls - In contrast, stateful firewalls remember information about previously passed packets and are considered much more secure.
+- X.509 - An X.509 certificate is a digital certificate based on the widely accepted International Telecommunications Union (ITU) X.509 standard, which defines the format of public key infrastructure (PKI) certificates. X.509 standard defines the format of public key certificates. X.509 certificates are used in many Internet protocols, including TLS/SSL, which is the basis for HTTPS, the secure protocol for browsing the web. They are also used in offline applications, like electronic signatures. An X.509 certificate binds an identity to a public key using a digital signature. 
 
-- sudo nmap -n -PN -sT -sU -p- localhost or sudo nmap -sT -O localhost - Either of these commands can be used to find the unique port number for http traffic.
+![SEC-06-PublicKeyInfrastructure](../00_includes/SECURITIES/SEC-06/i2.png)
 
-- sudo systemctl status apache2 - To check the status of apache2, whether it is active and running.
-
+- Self-Signed SSL Certificate - A self-signed SSL certificate is a certificate that is signed by the person who created it rather than a trusted certificate authority. Self-signed certificates can have the same level of encryption as the trusted CA-signed SSL certificate. Web browsers do not recognize the self-signed certificates as valid. When using a self-signed certificate, the web browser shows a warning to the visitor that the web site certificate cannot be verified. Typically, the self-signed certificates are used for testing purposes or internal usage. You should not use a self-signed certificate in production systems that are exposed to the Internet.
 ### Exercise
 
-1. Install a web server on your VM.
+1. Create a self-signed certificate on your VM.
 
-2. View the default page installed with the web server.
+2. Analyze some certification paths of known websites (ex. techgrounds.nl / google.com / ing.nl).
 
-3. Set the firewall to block web traffic, but allow ssh traffic.
+3. Find the list of trusted certificate roots on your system (bonus points if you also find it in your VM).
 
-4. Check if the firewall is doing its job.
 ### Sources
 
-- [Firewalls explained](https://www.forcepoint.com/cyber-edu/firewall)
+- [What is Public Key Infrastructure (PKI)](https://www.youtube.com/watch?v=i-rtxrEz_E8) ----> Great resource for learning how PKI works! (suggested by a teammate)
 
-- [Finding listening ports in linux](https://www.tecmint.com/find-listening-ports-linux/)
+- [PKI explained](https://en.wikipedia.org/wiki/Public_key_infrastructure)
 
-- [Finding open ports in linux using nmap](https://www.linuxandubuntu.com/home/what-are-ports-how-to-find-open-ports-in-linux)
+- [Certificate authority(CA)](https://en.wikipedia.org/wiki/Certificate_authority)
 
-- [Installing apache](https://ubuntu.com/tutorials/install-and-configure-apache#2-installing-apache)
+- [X.509 certificate](https://sectigo.com/resource-library/what-is-x509-certificate)
 
-- [FAllow or deny a port UFW](https://my.esecuredata.com/index.php?/knowledgebase/article/7/allow-or-deny-a-port-ufw-ubuntu)
+- [How to create a self-signed SSL certificate](https://linuxize.com/post/creating-a-self-signed-ssl-certificate/)
+
+- [How to create a self-signed SSL certificate - shorter command](https://websiteforstudents.com/how-to-create-self-signed-certificates-on-ubuntu-linux/)
+
+- [How Can I Tell if a Site Has SSL?](https://www.venafi.com/education-center/ssl/how-to-check-ssl-certificate#:~:text=For%20most%20browsers%2C%20look%20to,to%20view%20the%20certificate%20information)
+
+- [How to find list of certificates in my MAC](https://support.apple.com/en-gb/guide/keychain-access/kyca15178/mac)
 
 ### Overcome challanges
 
-1. I had to learn what are firewalls and the different types of ports.
+1. I had to understand the asymmetric encryption process better to further learn about PKI.
+2. Then learnt about CA and how to create a self-signed certificate on my VM
+3. I also learnt to find the certification path for websites which I have never thought about all these years - very interesting learning indeed!
 
-2. Then while trying to view the default page installed with the web server, I realized that I had to use the web port number to use web applications instead of the SSH-port to check if it's working.
-
-3. I also learnt that I had to deny port 80 for tcp protocol which is the unique port number for http traffic instead of port 80 to block web traffic. 
 ### Results
 
-1. Install a web server on your VM and 2. View the default page installed with the web server.
+1. Create a self-signed certificate on your VM.
 
-- Finding my unique port number for http traffic:
+- To create a new Self-Signed SSL Certificate, using the openssl req command:
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i1.png)
+![SEC-06-PublicKeyInfrastructure](../00_includes/SECURITIES/SEC-06/i3.png)
 
-- Apache2 was installed earlier so to check the status of already installed Apache2, I followed the path below:
+- Self-signed SSL certificate
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i2.png)
+![SEC-06-PublicKeyInfrastructure](../00_includes/SECURITIES/SEC-06/i4.png)
 
-- Viewing the Apache2 server's default page hosted on my virtual machine with web browser. It shows Apache2 server works on my local machine:
+2. Analyze some certification paths of known websites (ex. techgrounds.nl / google.com / ing.nl).
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i3.png)
+ To check if a site has an SSL certificate, the URL will usually begin with “https” instead of “http,”. A padlock icon displayed in a web browser also indicates that a site has a secure connection with an SSL certificate. SSL protocol ensures that data on that site is secured through SSL/TLS encryption and verification. It’s important to make sure that any website where sensitive data may be transferred uses SSL. Sites that don’t are vulnerable to attack by hackers or identity thieves, or may be fraudulent themselves.
 
-3. Set the firewall to block web traffic, but allow ssh traffic.
+- When I open techgrounds website and click on the padlock icon next to the URL, the certificate path is seen. I understand that Cloudfare has issued the certificate for techgrounds. 
 
-- Enabling firewall:
+![SEC-06-PublicKeyInfrastructure](../00_includes/SECURITIES/SEC-06/i5.png)
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i4.png)
+3. Find the list of trusted certificate roots on your system (bonus points if you also find it in your VM).
 
-- Denying port 80 for tcp protocol:
+- In order to find the list of certificates in Mac, I had to use Use Keychain Access to view the information contained in a certificate. 
 
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i5.png)
+- After selecting the system root and clicking on certificates, the list of certificates in my MAC were displayed.
 
-- fire wall status after denying port 80:
-
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i6.png)
-
-4. Check if the firewall is doing its job.
-Yes, the connection was timed out after blocking the port in firewall as shown below:
-
-![SEC-02-Firewalls](../00_includes/SECURITIES/SEC-02/i7.png)
-
-
-
-
-
-
+![SEC-06-PublicKeyInfrastructure](../00_includes/SECURITIES/SEC-06/i6.png)
