@@ -62,10 +62,6 @@ Hashing plaintext passwords is not enough. Without adding a “salt”, password
 
 - [How password hashing works on Linux](https://www.networkworld.com/article/3629440/how-password-hashing-works-on-your-linux-system.html)
 
-- [An online Rainbow Table](https://crackstation.net/)
-
-- [An online Rainbow Table](https://crackstation.net/)
-
 ### Overcome challanges
 
 I had to learn what hashing is and how it is different from encryption.  Then I learnt about rainbow table and what salting is. 
