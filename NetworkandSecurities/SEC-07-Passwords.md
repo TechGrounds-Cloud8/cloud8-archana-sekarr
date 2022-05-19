@@ -96,6 +96,8 @@ For eg: if the company uses encryption to store the users passwords, it is possi
 
 5.  Despite the bad password, and the fact that Linux uses common hashing algorithms, I was not able to get a match in the Rainbow Table because the password was salted(refer to key terminologies section to understand what salting is).
 
+And when I tried to compare hashes with a peer who had the same password as me, the rainbow table showed the same response as unrecognized hash format as the passwords were salted.
+
 
 
 
