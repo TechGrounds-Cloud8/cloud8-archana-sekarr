@@ -18,15 +18,19 @@ iii) Web Application Firewall and AWS Shield provide a firewall and DDoS protect
 
 iv) AWS Global Accelerator allows you to route requests for key resources through  Amazon’s global network—even if the request is going halfway round the world. The request is initially routed to the closest edge location and then travels through Amazon’s network—often with lower latency and higher throughput than the public internet.
 
-- Amazon CloudFront - CloudFront is Amazon’s content delivery network that is primarily used to speed up websites. It’s particularly useful for large, static assets—like images and videos. CloudFront sits in front of an “origin” server (which serves the original content), and caches it at the edge locations around the world.
+- Difference between AZ and EL - Both the Edge Locations (EL) and Availability Zones (AZ) are AWS Data Centers, but EL are primarily used for caching of the data to provide better user experience with low latency, the AZ are used for hosting servers, websites, applications, softwares, Big Data processing, analytics and a wide variety of use cases.
+
+AZ are big and few when compared to the EL. Also, the EL are closer to the user providing better latency when compared to the AZ. 
+
+-  AWS IAM - AWS Identity and Access Management (IAM) provides fine-grained access control across all of AWS. With IAM, you can specify who can access which services and resources, and under which conditions. With IAM policies, you manage permissions to your workforce and systems to ensure least-privilege permissions. IAM is an AWS service that is offered at no additional charge.
+
+- RDS Instances - Amazon Relational Database Service (Amazon RDS) is a web service that that allows you to quickly create a relational database instance in the cloud. Amazon RDS manages the database instance on your behalf by performing backups, handling failover, and maintaining the database software.
+
+-    Amazon CloudFront - CloudFront is Amazon’s content delivery network that is primarily used to speed up websites. It’s particularly useful for large, static assets—like images and videos. CloudFront sits in front of an “origin” server (which serves the original content), and caches it at the edge locations around the world.
 
 When a user visits a site, they’re routed to the nearest edge location using DNS. CloudFront looks to see if the page they requested is cached. If it is, the page is served directly from the cache. If it isn’t, CloudFront fetches the page from the origin, stores it in the cache, and serves it to the user. The next user to hit the same edge location will get the page served from the cache.
 
 The more responses that can be served from the cache, the lower the latency for users—and the lower the load on the origin.
-
-- Difference between AZ and EL - Both the Edge Locations (EL) and Availability Zones (AZ) are AWS Data Centers, but EL are primarily used for caching of the data to provide better user experience with low latency, the AZ are used for hosting servers, websites, applications, softwares, Big Data processing, analytics and a wide variety of use cases.
-
-AZ are big and few when compared to the EL. Also, the EL are closer to the user providing better latency when compared to the AZ. 
  
 ### Exercise
 
@@ -47,6 +51,13 @@ Study:
 
 - [ELvsAZ](https://www.edureka.co/community/54257/difference-between-an-edge-location-and-availability-zone)
 
+- [AWS IAM](https://aws.amazon.com/iam/)
+
+- [AWS tutorial](https://www.w3schools.com/aws/index.php)
+
+- [AWS Edge Locations vs Availability Zones | AWS Local Zones | AWS Regions](https://www.youtube.com/watch?v=Uk2A9-JO-_w)
+
+- [AWS tutorial for beginners](https://www.youtube.com/watch?v=r4YIdn2eTm4)
 
 ### Overcome challanges
 
@@ -77,13 +88,13 @@ Assess potential Regions for the right option:
 
 Evaluate by shortlisting potential Regions.
 
-1. Check if these Regions are compliant and have the services and features you need to run your workload using the AWS Regional Services website.
-2. Check feature availability of each service and versions available, if your workload has specific requirements.
-3. Calculate the cost of the workload on each Region using the AWS Pricing Calculator.
-4. Test the network latency between your user base location and each AWS Region.
-At this point, you should have a list of AWS Regions with varying cost and network latency that looks something Table 1:
+1. Checking if these Regions are compliant and have the services and features you need to run your workload using the AWS Regional Services website.
+2. Checking feature availability of each service and versions available, if your workload has specific requirements.
+3. Calculating the cost of the workload on each Region using the AWS Pricing Calculator.
+4. Testing the network latency between your user base location and each AWS Region.
+At this point, we should have a list of AWS Regions with varying cost and network latency that looks something Table 1:
 
 ![AWS-01-GlobalInfrastructure](../00_includes/AWS-Week1/AWS-01/i1.png)
 
-
+So based on these factors, it is possible to determine the region.
  
