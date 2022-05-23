@@ -1,6 +1,6 @@
 # Global Infrastructure
 
-This exercise helps us understand about the components of AWS Global Infrastructure which includes Availability zones, regions and edge locations. It also talks about the factors to be considered by a company while choosing a preferred location.
+This exercise helps in understanding the components of AWS Global Infrastructure which includes Availability zones, regions and edge locations. It also talks about the factors to be considered by a company while choosing a preferred location.
 
 ## Key terminology
 
