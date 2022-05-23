@@ -63,13 +63,13 @@ Study:
 
 ### Overcome challanges
 
-I learnt about the meaning of each key terminologies mentioned in this exercise. It seemed quite similar when I read initially about the components of GI, but made more sense when I read further about the subtle differences involved behind each component. 
+I learnt about the meaning of each key terminology mentioned in this exercise. It seemed quite similar when I read initially about the components of GI, but made more sense when I read further about the subtle differences involved behind each component. 
 
 ### Results
 
 1. AWS Regions are separate geographical areas that AWS uses to house its infrastructure. These are distributed around the world so that customers can choose a region closest to them in order to host their cloud infrastructure there. The closer your region is to you, the better, so that you can reduce network latency as much as possible for your end-users. You want to be near the data centers for fast service. AWS has 26 launced regions now.
 
-2. AWS availability zone is the logical building block that makes up an AWS Region. There are currently 84 AZs, which are isolated locations — data centers — within a region. Each region has multiple AZs and when you design your infrastructure to have backups of data in other AZs you are building a very efficient model of resiliency, i.e. a core concept of cloud computing.
+2. AWS availability zone is the datacenter inside a large geographic area(AWS Region). There are currently 84 AZs, which are isolated locations — data centers — within a region. Each region has multiple AZs and when you design your infrastructure to have backups of data in other AZs you are building a very efficient model of resiliency, i.e. a core concept of cloud computing.
 
 3. An edge location is the closest point to the user using AWS service. It is basically a small setup in different locations. It provides low latency connectivity by providing static content to be available from the nearest location of the request. What actually happens here is that instead of getting the information from the source it just routes to the nearest edge location and delivers the information reducing the latency to the end users. So, by following this way the access time is reduced and response gets faster.
 
