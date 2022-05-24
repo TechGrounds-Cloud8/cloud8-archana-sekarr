@@ -49,6 +49,7 @@ Study:
 - [EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)
 - [TCO](https://www.brockoa.com/total-cost-of-ownership/)
 - [CapEx vs OpEx](https://www.investopedia.com/ask/answers/112814/whats-difference-between-capital-expenditures-capex-and-operational-expenditures-opex.asp#:~:text=Capital%20expenditures%20(CAPEX)%20are%20major,to%20keep%20its%20business%20operational.)
+- [CapEx & OpEx YT](https://www.youtube.com/watch?v=dLyKfxkkA1s)
 
 ### Overcome challanges
 
