@@ -24,9 +24,7 @@ This exercise was quite straightforward and I learnt about the advantages in the
 
 Six Advantages of Cloud Computing:
 
- 1. Trade Capital expense (CapEx) for variable expense (OpEx):
- 
- In the traditional model, you spend a lot of money in buying new equipments and for setting up data centers whereas in the case of cloud, you only pay for the services you use and how much you consume, which translates into the pay-as-you-go pricing model. By using Cloud, captial expenses (CapEX) can be traded for operating expenses (OpEx) which will eliminate the risk of investing heavily in purchase of servers/data centers for future usage which are not necessarily certain at the time of investment. 
+ 1. Trade Capital expense (CapEx) for variable expense (OpEx): In the traditional model, you spend a lot of money in buying new equipments and for setting up data centers whereas in the case of cloud, you only pay for the services you use and how much you consume, which translates into the pay-as-you-go pricing model. By using Cloud, captial expenses (CapEX) can be traded for operating expenses (OpEx) which will eliminate the risk of investing heavily in purchase of servers/data centers for future usage which are not necessarily certain at the time of investment. 
  
  With CapEx, your expenses are tax deductible over a depreciation lifetime which can be several years whereas in the case of OpEx model, your expenses are tax deductible in the same tax year. 
 
