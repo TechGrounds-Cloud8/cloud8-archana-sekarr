@@ -40,11 +40,9 @@ Exercise 1
 - Default network, no preference for subnet
 - Termination protection: enabled
 - User data:
-#!/bin/bash
- yum -y install httpd
-systemctl enable httpd
-systemctl start httpd
- echo '<html><h1>Hello From Your Web Server!</h1></html>' >   /var/www/html/index.html
+
+![AWS-06-ElasticComputeCloud(EC2)](../00_includes/AWS-Week1/AWS-06/i15.png)
+
 - Root volume: general purpose SSD, Size: 8 GiB
 - New Security Group:
 Name: Web server SG
@@ -71,6 +69,7 @@ Exercise 2
 ### Overcome challanges
 
 I tried to understand the concept EC2 and this exercise again involved intense reading. When I tried to login using the ssh connection, it took me a while to realize that I needed a keypair in order to login.
+
 ### Results
 
 Exercise 1:
