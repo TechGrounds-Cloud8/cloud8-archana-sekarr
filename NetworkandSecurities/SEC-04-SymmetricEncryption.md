@@ -91,7 +91,6 @@ Public Key Cryptography is an asymmetrical system in wide use today by people an
 
 3. Symmetric encryption calls for  giving the key to decrypt a message in person with a piece of paper. This was practised in olden times and it's not a secure method. This exercise asks for sharing the key in a public channel which may increase the possibility for anyone to decrypt the message in the group to decrypt the message if they knew the username. So this is not a ideal way to share an encrypted message. 
 
-
-
+[Secret Key Exchange (Diffie-Hellman)](https://www.youtube.com/watch?v=NmM9HA2MQGI)
 
 

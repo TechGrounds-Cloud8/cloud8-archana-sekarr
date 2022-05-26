@@ -2,42 +2,30 @@
 
 This exercise helps in understanding S3 better along with the different classes. Also, learnt how to use S3 to host a static website.
 
+Introduction:
+
 AWS offers object based storage in the form of S3. S3 makes use of buckets as a container for objects. A single object in S3 has a maximum size of 5TB. However, the total size of a bucket is virtually unlimited.
 
-Bucket names must be globally unique. That is, even other AWS accounts in different regions cannot share the same bucket name. Buckets, and objects within buckets, can be accessed using a URL.
-
-The bucket policy acts as an access control list. Data can be encrypted for even further protection.
-
-Objects are automatically replicated within a region, so that there’s always at least three copies available. This redundancy greatly increases the availability and durability of objects stored in S3.
-
-S3 has storage classes based on the frequency of how the data is accessed. Amazon S3 offers a range of storage classes that you can choose from based on the data access, resiliency, and cost requirements of your workloads:
-
-- S3 Standard
-- S3 Standard-IA
-- S3 One-zone IA
-- S3 Glacier
-There’s also S3 Glacier Deep archive, a subclass of S3 Glacier. And Intelligent Tiering which is more a cost optimization tool than a class on its own.
-
-Storage classes differ in availability, durability, retrieval time, and cost.
-
 In S3, you pay for:
-GBs storage per month
-Transfer OUT to out of the region
-PUT, COPY, POST, LIST, and GET requests
-
+- GBs storage per month
+- Transfer OUT to out of the region
+- PUT, COPY, POST, LIST, and GET requests
 You don’t pay for:
-Transfer IN to Amazon S3
-Transfer OUT from S3 to CloudFront or EC2 in the same region
+- Transfer IN to Amazon S3
+- Transfer OUT from S3 to CloudFront or EC2 in the same region
 
 Besides storing data for all kinds of purposes (big data, storing videos, archiving, etc.), S3 has another use case: hosting static websites.
-
 ## Key terminology
 
 -  Object storage - Organizations today face difficulties cost-effectively storing what is an unprecedented amount of data. Much of this data is unstructured and doesn’t fit easily into traditional databases. Email, videos, photos, webpages, audio files, sensor data, and other types of web content are all unstructured, and finding efficient and affordable ways to manage them has become problematic. Cloud object storage is increasingly seen as the solution to this challenge. With AWS object storage solutions, you manage your storage in one place with an easy-to-use application interface. You can use policies to optimize storage costs, tiering between different storage classes automatically. AWS makes storage easier to use to perform analysis, gain insights, and make better decisions faster. 
 
 - Buckets - A bucket is a container for objects stored in Amazon S3. You can store any number of objects in a bucket and can have up to 100 buckets in your account. Every object is contained in a bucket. To upload your data (photos, videos, documents, etc.) to Amazon S3, you must first create an S3 bucket in one of the AWS Regions. In traditional NAS terms, a bucket would be a “folder”, but because S3 deals with objects and not files, the distinction becomes important.
 
-- Bucket policy - A bucket policy is a resource-based policy that you can use to grant access permissions to your bucket and the objects in it. Only the bucket owner can associate a policy with a bucket. The permissions attached to the bucket apply to all of the objects in the bucket that are owned by the bucket owner. These permissions do not apply to objects owned by other AWS accounts.
+Bucket names must be globally unique. That is, even other AWS accounts in different regions cannot share the same bucket name. Buckets, and objects within buckets, can be accessed using a URL.
+
+- Bucket policy - A bucket policy is a resource-based policy that you can use to grant access permissions to your bucket and the objects in it. Only the bucket owner can associate a policy with a bucket. The permissions attached to the bucket apply to all of the objects in the bucket that are owned by the bucket owner. These permissions do not apply to objects owned by other AWS accounts. The bucket policy acts as an access control list. Data can be encrypted for even further protection.
+
+Different storage classes:
 
 - S3 Standard - S3 Standard offers high durability, availability, and performance object storage for frequently accessed data. Because it delivers low latency and high throughput, S3 Standard is appropriate for a wide variety of use cases, including cloud applications, dynamic websites, content distribution, mobile and gaming applications, and big data analytics. This is the best choice if you access data more than once a month.
 
@@ -57,10 +45,11 @@ iii) To save even more on long-lived archive storage such as compliance archives
 
 All these storage classes provide multi-Availability Zone (AZ) resiliency by redundantly storing data on multiple devices and physically separated AWS Availability Zones in an AWS Region.
 
+- S3 Intelligent-Tiering - The S3 Intelligent-Tiering storage class is designed to optimize storage costs by automatically moving data to the most cost-effective access tier when access patterns change, without operational overhead or impact on performance. It is more a cost optimization tool than a class on its own.
+
 - Static websites - deliver HTML, JavaScript, images, video and other files to your website visitors. Static websites are very low cost, provide high-levels of reliability, require almost no IT administration, and scale to handle enterprise-level traffic with no additional work.
 
 - S3 PUT, COPY, POST, LIST, and GET requests - These are different APIs in S3 that can be used to store/update/list/retrieve the objects in a bucket.
-
 
 ### Exercise
 

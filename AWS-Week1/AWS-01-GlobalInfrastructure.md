@@ -1,7 +1,6 @@
 # Global Infrastructure
 
 This exercise helps in understanding the components of AWS Global Infrastructure which includes Availability zones, regions and edge locations. It also talks about the factors to be considered by a company while choosing a preferred location.
-
 ## Key terminology
 
 - Regions - In AWS, the concept of region is a physical location around the world where they cluster data centers. Each group of logical data centers is called an Availability Zone. Each AWS Region consists of multiple, isolated, and physically separate AZs within a geographic area. Unlike other cloud providers, who often define a region as a single data center, the multiple AZ design of every AWS Region offers advantages for customers. Each AZ has independent power, cooling, and physical security and is connected via redundant, ultra-low-latency networks. AWS customers focused on high availability can design their applications to run in multiple AZs to achieve even greater fault-tolerance. AWS infrastructure Regions meet the highest levels of security, compliance, and data protection. 
@@ -31,8 +30,7 @@ AZ are big and few when compared to the EL. Also, the EL are closer to the user 
 When a user visits a site, they’re routed to the nearest edge location using DNS. CloudFront looks to see if the page they requested is cached. If it is, the page is served directly from the cache. If it isn’t, CloudFront fetches the page from the origin, stores it in the cache, and serves it to the user. The next user to hit the same edge location will get the page served from the cache.
 
 The more responses that can be served from the cache, the lower the latency for users—and the lower the load on the origin.
- 
-### Exercise
+ ### Exercise
 
 Study:
 
@@ -40,7 +38,6 @@ Study:
 2. What is a Region?
 3. What is an Edge Location?
 4. Why would you choose one region over another? (e.g. eu-central-1 (Frankfurt) over us-west-2 (Oregon)).
-
 ### Sources
 
 - [Global Infrastructure AWS](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#:~:text=the%20Middle%20East.-,Availability%20Zones,connectivity%20in%20an%20AWS%20Region.)

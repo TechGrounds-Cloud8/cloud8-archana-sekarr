@@ -30,6 +30,7 @@ For the root volume, an instance can use Elastic Block Store (EBS) or Instance s
 - Reserved Instances - Reserved Instances provide you with significant savings on your Amazon EC2 costs compared to On-Demand Instance pricing. Reserved Instances are not physical instances, but rather a billing discount applied to the use of On-Demand Instances in your account. Reserved instances provide a greater discount depending on how much you pay up front. You can reserve instances only for 1 or 3 years.
 
 - Spot Instances - A Spot Instance is an instance that uses spare EC2 capacity that is available for less than the On-Demand price. Because Spot Instances enable you to request unused EC2 instances at steep discounts, you can lower your Amazon EC2 costs significantly. The hourly price for a Spot Instance is called a Spot price. Spot instances are generally considered the cheapest, but their availability depends on the demand, so they’re not always reliable.
+
 ### Exercise
 
 Exercise 1
@@ -127,7 +128,7 @@ connect to the ec2 instance instructions
 
 ![AWS-06-ElasticComputeCloud(EC2)](../00_includes/AWS-Week1/AWS-06/i9.png)
 
-![AWS-06-ElasticComputeCloud(EC2)](../00_includes/AWS-Week1/AWS-06/i10.png)
+![AWS-06-ElasticComputeCloud(EC2)](../00_includes/AWS-Week1/AWS-06/i10(i).png)
 
 3. Terminating the instance
 

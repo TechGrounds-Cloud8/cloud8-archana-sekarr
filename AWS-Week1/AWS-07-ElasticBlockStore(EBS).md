@@ -1,59 +1,98 @@
-# Network detection
+# Elastic Block Store (EBS)
 
-Network detection is the practice of analyzing the entirety of a security ecosystem to identify any malicious activity that could compromise the network. In order to prevent or stop attacks on a network, you must be able to analyse your network. If a threat is detected, then mitigation efforts must be enacted to properly neutralize the threat before it can exploit any present vulnerabilities.
+In this exercise, I learnt how to create EBS Volumes and Snapshots. I also learnt how to create EBS Volumes from Snapshots and how to attach EBS volume to the EC2 instance.   
 
-Nmap (Network Mapper) is a tool that scans a network to find information about it. For example, what ports are open in a host in your network.
+Introduction:
 
-Wireshark is a protocol analyzer. It looks at network traffic and shows information about packets like protocol and destination (among other things).
+EBS can be seen as virtual hard drives in the cloud. They can be either root volumes (like an internal hard disk), or seperate volumes (like an external hard disk). 
 
+For security, EBS volumes can be encrypted. Volumes can be scaled up, but not down.
+
+Any external device, including EBS, needs to be mounted if you want to use them in Linux.
 ## Key terminology
 
-- sudo apt  install nmap - to install nmap in linux
-- ip addr - to view IP address of your computer
-- sudo nmap -sP (IP address) - to scan the network to view all the connected hosts
-or sudo nmap -sn (IP address - scans the list of all the devices connected to the network, together with their IP address
-- sudo nmap -v (IP address) - to scan network to view open ports
-- sudo nmap -sV (IP address) - This command allows the user to check the services run on the target
-- sudo nmap -p (port) (IP address) - to scan for port
- 
+- EBS Volumes - An Amazon EBS volume is a durable, block-level storage device that you can attach to your instances. After you attach a volume to an instance, you can use it as you would use a physical hard drive. EBS volumes are flexible. One instance of an EBS is called a volume. You can create snapshots of a volume to create backups or new identical volumes. These snapshots will be stored in S3.
+
+- Volume types: Amazon EBS provides the following volume types, which differ in performance characteristics and price, so that you can tailor your storage performance and cost to the needs of your applications. The volumes types fall into these categories:
+
+i) Solid state drives (SSD) — Optimized for transactional workloads involving frequent read/write operations with small I/O size, where the dominant performance attribute is IOPS.
+
+ii) Hard disk drives (HDD) — Optimized for large streaming workloads where the dominant performance attribute is throughput.
+
+iii) Previous generation — Hard disk drives that can be used for workloads with small datasets where data is accessed infrequently and performance is not of primary importance. We recommend that you consider a current generation volume type instead.
+
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i11.png)
+
+- snapshots - EBS Snapshots provide a simple and secure data protection solution that is designed to protect your block storage data such as EBS volumes, boot volumes, as well as on-premises block data. EBS Snapshots are a point-in-time copy of your data, and can be used to enable disaster recovery, migrate data across regions and accounts, and improve backup compliance. You can create snapshots of a volume to create backups or new identical volumes. These snapshots will be stored in S3.
 ### Exercise
 
-1. Scan the network of your Linux machine using nmap. What do you find?
-2. Open Wireshark in Windows/MacOS Machine. Analyse what happens when you open an internet browser. (Tip: you will find that Zoom is constantly sending packets over the network. You can either turn off Zoom for a minute, or look for the packets sent by the browser between the packets sent by Zoom.)
+Exercise 1
+1. Navigate to the EC2 menu.
+2. Create a t2.micro Amazon Linux 2 machine with all the default settings.
+3. Create a new EBS volume with the following requirements:
+- Volume type: General Purpose SSD (gp3)
+- Size: 1 GiB
+- Availability Zone: same as your EC2
+4. Wait for its state to be available.
 
+Exercise 2
+1. Attach your new EBS volume to your EC2 instance.
+2. Connect to your EC2 instance using SSH.
+3. Mount the EBS volume on your instance.
+4. Create a text file and write it to the mounted EBS volume.
+
+Exercise 3
+1. Create a snapshot of your EBS volume.
+2. Remove the text file from your original EBS volume.
+3. Create a new volume using your snapshot.
+4. Detach your original EBS volume.
+5. Attach the new volume to your EC2 and mount it.
+6. Find your text file on the new EBS volume.
 ### Sources
 
-- [Network detection and response](https://www.vectra.ai/learning/ndr)
-- [Threat detection](https://www.rapid7.com/fundamentals/threat-detection/)
-- [Finding devices connected to your network using nmap](https://vitux.com/find-devices-connected-to-your-network-with-nmap/)
-- [nmap on linux](https://www.howtoforge.com/tutorial/nmap-on-linux/)
-
+- [Create an Amazon EBS volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html)
+- [To attach an EBS volume to an instance using the console](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html)
+- [Make an Amazon EBS volume available for use on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html)
+- [Detach an EBS volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html#considerations)
+- [snapshots](https://aws.amazon.com/ebs/snapshots/#:~:text=EBS%20Snapshots%20are%20a%20point,)%2C%20or%20the%20AWS%20SDKs.)
 ### Overcome challanges
-I had to learn what is network detection and how to face the threats. I also learnt about nmap scanning.
 
+This exercise involved extensive reading to understand the key terminologies and the reason for creating EBS volumes and snapshots. I also learnt the different commands for attaching and mounting volumes. 
 ### Results
 
-1. - Installing nmap in linux
+Exercise 1
 
-![SEC-01-Networkdetection](../00_includes/SECURITIES/SEC-01/i1.png)
+1. created a t2 micro ec2 instance
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i1.png)
 
-- Searching ip address for scanning
+2. created an ebs volume 
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i2.png)
 
-![SEC-01-Networkdetection](../00_includes/SECURITIES/SEC-01/i2.png)
+Exercise 2
 
-- list of all the devices connected to the network using nmap with different commands. 
-The output shows that 13 devices are connected to the network.
-
-![SEC-01-Networkdetection](../00_includes/SECURITIES/SEC-01/i3.png)
-
-![SEC-01-Networkdetection](../00_includes/SECURITIES/SEC-01/i4.png)
-
-![SEC-01-Networkdetection](../00_includes/SECURITIES/SEC-01/i5.png)
-
-2. I refreshed my browser window and I noticed that wireshark was capturing the ongoing network traffic. 
-
-![SEC-01-Networkdetection](../00_includes/SECURITIES/SEC-01/i6.png)
+1. Attaching the EBS volume to the ec2 instance
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i3.png)
 
 
+2. Mounting EBS volume 
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i4.png)
 
- 
+3. Creating a text file
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i5.png)
+
+Exercise 3
+
+1. Creating a snapshot of the ebs volume
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i6.png)
+
+2. Removing the text file in the original file
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i7.png)
+
+3. Creating a volume out of the snapshot
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i8.png)
+
+4. Detaching the original vloume of the ec2
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i9.png)
+
+5. Attaching the new vloume and mounting the instance
+![AWS-07-ElasticBlockStore(EBS)](../00_includes/AWS-Week1/AWS-07/i10.png)
