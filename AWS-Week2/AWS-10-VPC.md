@@ -139,6 +139,6 @@ Exercise 4:
 
 ![AWS-10-VPC](../00_includes/AWS-Week2/AWS-10/i9-1.png)
 
-2. Connecting to the server with public dns name
+2. Connecting to the server with public DNS name
 
 ![AWS-10-VPC](../00_includes/AWS-Week2/AWS-10/i10.png)
