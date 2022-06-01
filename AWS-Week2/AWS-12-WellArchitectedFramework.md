@@ -37,6 +37,8 @@ Study: The Well Architected Framework
 
 - [WAF](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html)
 
+- [WAF YT](https://www.youtube.com/watch?v=x6DIk0_2Goo)
+
 ### Overcome challanges
 
 I learnt the six pillars along with the key terminologies using the above source. 
