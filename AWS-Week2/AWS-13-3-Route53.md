@@ -13,8 +13,6 @@ Amazon Route 53 effectively connects user requests to infrastructure running in 
 Route 53 uses a **global network of DNS servers** at a series of world-wide locations to offer high availability and increased performance.
 
 The name for this service (Route 53) comes from the fact that DNS servers respond to queries on **port 53** and provide answers that route end users to your applications on the Internet. In the future, we will add additional routing capabilities to Route 53 to better help your users find the best way to your website or application.
-
-
 ## Key terminology
 
 - DNS - The Domain Name System (DNS) is a globally distributed service that is foundational to the way people use the Internet. DNS uses a hierarchical name structure, and different levels in the hierarchy are each separated with a dot ( . ). Consider the domain names www.amazon.com and aws.amazon.com. In both these examples, “com” is the Top-Level Domain and “amazon” the Second-Level Domain. There can be any number of lower levels (e.g., “www” and “aws”) below the Second-Level Domain. Computers use the DNS hierarchy to translate human readable names like www.amazon.com into the IP addresses like 192.0.2.1 that computers use to connect to one another.
@@ -28,12 +26,21 @@ Study : Route 53
 - [AWS Route 53 documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)
 - [AWS Route 53 overview](https://aws.amazon.com/route53/)
 - [Route 53 YT tutorail](https://www.youtube.com/watch?v=H6_VyaYjTYI)
+-[Route 53 features](https://aws.amazon.com/route53/features/)
 
 ### Overcome challanges
 
  I understood the concept by referring to the sources shared above.
 
 ### Results
+
+Some of the key features of Route 53 are:
+
+1. Domain Name Registration : You can now purchase a new domain name or transfer the management of your existing domain name to Route 53. When you purchase new domains via Route 53, the service will automatically configure a Hosted Zone for each domain. Route 53 offers privacy protection for your WHOIS record at no additional charge.
+
+2. Resolver DNS Firewall : With Route 53 Resolver DNS Firewall, you can filter and regulate outbound DNS traffic for your virtual private cloud (VPC). To do this, you create reusable collections of filtering rules in DNS Firewall rule groups, associate the rule groups to your VPC, and then monitor activity in DNS Firewall logs and metrics. Based on the activity, you can adjust the behavior of DNS Firewall accordingly.
+
+3. Health Checks and Monitoring : With DNS Failover, Amazon Route 53 can help detect an outage of your website and redirect your end users to alternate locations where your application is operating properly. When you enable this feature, Route 53 health-checking agents will monitor each location (or "endpoint") of your application to determine its availability. In the event an endpoint fails, Route 53 will route traffic away from the failed endpoint and to other, healthy endpoints. This helps add redundancy to your applications and maintain high availability for your end users.
 
 I explored how Route 53 works following the link below
 https://us-east-1.console.aws.amazon.com/route53/v2/home#Dashboard
