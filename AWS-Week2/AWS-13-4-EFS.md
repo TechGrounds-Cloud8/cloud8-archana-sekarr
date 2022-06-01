@@ -1,21 +1,3 @@
-# Amazon Elastic File System (EFS)
+EFS
 
-
-## Key terminology
-
-
-### Exercise
-
-Study : EFS
-
-### Sources
-
-
-- [EFS YT](https://www.youtube.com/watch?v=Aux37Nwe5nc)
-- 
-
-### Overcome challanges
-
-
-### Results
-
+Amazon Elastic File System (Amazon EFS) provides a simple, serverless, set-and-forget elastic file system for use with AWS Cloud services and on-premises resources. It is built to scale on demand to petabytes without disrupting applications, growing and shrinking automatically as you add and remove files, eliminating the need to provision and manage capacity to accommodate growth. Amazon EFS has a simple web services interface that allows you to create and configure file systems quickly and easily. The service manages all the file storage infrastructure for you, meaning that you can avoid the complexity of deploying, patching, and maintaining complex file system configurations.
