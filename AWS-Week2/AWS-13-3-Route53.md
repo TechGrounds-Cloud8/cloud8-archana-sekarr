@@ -25,7 +25,6 @@ Study : Route 53
 
 ### Sources
 
-- Previous exercises
 - [AWS Route 53 documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)
 - [AWS Route 53 overview](https://aws.amazon.com/route53/)
 - [Route 53 YT tutorail](https://www.youtube.com/watch?v=H6_VyaYjTYI)
