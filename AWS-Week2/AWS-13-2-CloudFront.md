@@ -1,10 +1,9 @@
 # CloudFront
-
 ### Content Delivery Network (CDN)
 
 A CDN is a globally distributed set of servers that caches content such as videos. When a user requests your content, the CDN routes the request to the edge location that provides the lowest latency. If your content is already cached in that edge location, the CDN delivers it immediately. If your content is not currently in that edge location, the CDN retrieves it from your origin (in this case, the MediaPackage endpoint) and distributes it to the user. 
 
-The benefits of a CDN include content and ad caching, consistent domain names across personalized manifests, and CDN DNS resolution.
+The benefits of a CDN include content and ad caching, consistent domain names across personalized manifests, and CDN DNS resolution. 
 
 ![AWS-13-2-CloudFront](../00_includes/AWS-Week2/AWS-13-2/i1.png)
 
@@ -16,19 +15,25 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
 
 - If the content is already in the edge location with the lowest latency, CloudFront delivers it immediately.
 
-- If the content is not in that edge location, CloudFront retrieves it from an origin that you've defined—such as an Amazon S3 bucket, a MediaPackage channel, or an HTTP server (for example, a web server) that you have identified as the source for the definitive version of your content.
+- If the content is not in that edge location, CloudFront retrieves it from an origin that is defined by the client —such as an Amazon S3 bucket, a MediaPackage channel, or an HTTP server (for example, a web server) that you have identified as the source for the definitive version of your content.
 
 To summarize in simple words, the benefits of AWS CloudFront are:
 
-1. It will cache copies of your objects(files) in multiple edge locations and decrease the workload, thus resulting in high availability and reliability of applications.
-2. It is simple to use and ensures productivity enhancement. Using the AWS network dramatically reduces the number of networks that your users' requests must pass through, which improves performance.
-3. It is less expensive, as it only charges for the data transfer.
-4. Users get lower latency—the time it takes to load the first byte of the file—and higher data transfer rates.
-5. It provides high security with the ‘Content Privacy’ feature.
-6. It facilitates GEO targeting service for content delivery to specific end-users.
-7. It uses HTTP or HTTPS protocols for quick delivery of content.
+ 1. It employs a global network of edge locations and regional edge caches that cache copies of your content close to your viewers. It ensures that end-user requests are served by the closest edge location. As a result, viewer requests travel a short distance, improving performance for your viewers. 
 
+2. It is simple to use and ensures productivity enhancement. Using the AWS network dramatically reduces the number of networks that your users' requests must pass through, which improves performance.
+
+3. It is less expensive, as it only charges for the data transfer.
+
+4. Users get lower latency—the time it takes to load the first byte of the file—and higher data transfer rates.
+
+5. It provides high security with the ‘Content Privacy’ feature.
+
+6. It facilitates GEO targeting service for content delivery to specific end-users.
+
+7. It uses HTTP or HTTPS protocols for quick delivery of content.
 ### How Does AWS CloudFront Work?
+
 The following steps explain how CloudFront delivers the content:
 
 Step 1: The client accesses a website and requests to download a file (like an image file).
@@ -58,13 +63,28 @@ Study: CloudFront
 ### Sources
 
 - [AWS CloudFront Documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+- [FAQ](https://aws.amazon.com/cloudfront/faqs/)
 - [CloudFront tutorial](https://www.simplilearn.com/tutorials/aws-tutorial/aws-cloudfront)
+-[CloudFront and Load Balancing](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/restrict-access-to-load-balancer.html)
+-[Competitors](https://www.gartner.com/reviews/market/global-cdn/vendor/amazon-web-services/product/cloudfront-cdn/alternatives)
 
 ### Overcome challanges
 
- I understood the concept by referring to the sources shared above and I tried to create a distribution. 
+ I understood the concept by referring to the sources shared above and I tried to create a distribution.
 
 ### Results
+
+How is CloudFront different from S3?
+
+Amazon CloudFront is a good choice for distribution of frequently accessed static content that benefits from edge delivery—like popular website images, videos, media files or software downloads.
+
+CloudFront in association with Load balancing:
+
+For a web application or other content that’s served by an Application Load Balancer in Elastic Load Balancing, CloudFront can cache objects and serve them directly to users (viewers), reducing the load on Application Load Balancer. CloudFront can also help to reduce latency and even absorb some distributed denial of service (DDoS) attacks. However, if users can bypass CloudFront and access the Application Load Balancer directly, these benefits aren't available. But by configuring Amazon CloudFront and Application Load Balancer, users are prevented from directly accessing the Application Load Balancer. This allows users to access the Application Load Balancer only through CloudFront, ensuring that the client gets the benefits of using CloudFront.
+
+Alternatives and Market Competitors:
+
+Some of the market competitors of CloudFront are Akamai CDN, Cloudfare CDN, Google Cloud CDN and Microsoft Azure CDN. Although, there are alternative options, CloudFront is widely used because it offers secure content hosting at no extra fee. AWS Certification Manager also allows the creation and managing of custom SSL certificates for your website free of charge.
 
 Setting up Cloudfront to create a distribution:
 
@@ -74,4 +94,3 @@ Creating a distribution can be done using the following link. By enabling the di
 
 https://console.aws.amazon.com/cloudfront/.
 
-![AWS-13-2-CloudFront](../00_includes/AWS-Week2/AWS-13-2/i4.png)
