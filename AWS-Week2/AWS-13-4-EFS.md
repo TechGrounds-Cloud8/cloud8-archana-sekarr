@@ -25,6 +25,7 @@ Study : EFS
 - [EFS YT tutorial](https://www.youtube.com/watch?v=Aux37Nwe5nc)
 - [EFSvsS3vsEBS](https://aws.amazon.com/efs/when-to-choose-efs/)
 - [EFS Ec2 setup](https://docs.aws.amazon.com/efs/latest/ug/wt1-create-ec2-resources.html#wt1-create-sg)
+-[alternatives and competitors](https://www.g2.com/products/amazon-elastic-file-system-amazon-efs/competitors/alternatives)
 ### Overcome challanges
 
 Using the following sources, I learnt how EFS works. 
@@ -32,12 +33,14 @@ Using the following sources, I learnt how EFS works.
 
 When deciding if you should be using file, object, or block storage for your cloud application deployment, there are many factors to consider. By comparing Amazon EFS to Amazon S3 and Amazon EBS, we can understand when to choose EFS, as explained below.
 
-**How is Amazon EFS different than Amazon S3?**
+## How is Amazon EFS different than Amazon S3?
+
 Amazon EFS provides shared access to data using a traditional file sharing permissions model and **hierarchical directory structure** via the NFSv4 protocol. Applications that access data using a standard file system interface provided through the operating system can use Amazon EFS to take advantage of the scalability and reliability of file storage in the cloud without writing any new code or adjusting applications.
 
 Amazon S3 is an object storage platform that uses a simple API for storing and accessing data. Applications that do not require a file system structure and are designed to work with object storage can use Amazon S3 as a massively scalable, durable, low-cost object storage solution.
 
-**How is Amazon EFS different than Amazon EBS?**
+## How is Amazon EFS different from Amazon EBS?
+
 Amazon EFS provides **shared file storage** for use with compute instances in the AWS Cloud and on-premises servers. Applications that require shared file access can use Amazon EFS for reliable file storage delivering high aggregate throughput to thousands of clients simultaneously.
 
 Amazon EBS is a cloud block storage service; so one EBS volume can be attached to only one EC2 instance. EBS provides direct access from a single Amazon EC2 instance to a dedicated storage volume. Applications that require persistent dedicated block access for a single host can use Amazon EBS as a highly available, low-latency block storage solution.
@@ -48,7 +51,11 @@ Comparing Amazon Cloud Storage:
 
 Amazon EFS’s distributed nature enables high levels of availability, durability, and scalability. This distributed architecture results in a small latency overhead for each file operation. Due to this per-operation latency, overall throughput generally increases as the average I/O size increases, since the overhead is amortized over a larger amount of data. Amazon EFS's support for highly parallelized workloads (i.e. with concurrent operations from multiple threads and multiple EC2 instances) enables high levels of aggregate throughput and IOPS.
 
-Exercise: 
+Alternatives and Market Competitors:
+
+Some of the alternatives and competitors of EFS are Azure Files, Google Cloud Filestore, Cyberduck, and Igloo. However, EFS is easier to set up and it is also highly scalable and delivers consistent low latencies and high levels of throughput which makes it very popular.
+
+## Practical Exercise: 
 
 Creating an EFS file system and mounting it on an EC2 instance by following the steps in [EFS Ec2 setup](https://docs.aws.amazon.com/efs/latest/ug/wt1-create-ec2-resources.html#wt1-create-sg)
 

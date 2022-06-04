@@ -1,5 +1,4 @@
 # Amazon Relational Database Service (RDS) and Aurora
-
 ## RDS
 
 Amazon RDS is a web service that makes it easier to set up, operate, and scale a relational database in the cloud. It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks.
@@ -41,6 +40,11 @@ Amazon Aurora MySQL-Compatible Edition and Amazon Aurora PostgreSQL-Compatible E
 
 PostgreSQL has a rich history for support of advanced data types, and supports a level of performance optimization that is common across its commercial database counterparts, like Oracle and SQL Server. AWS supports PostgreSQL through a fully managed database service with Amazon Relational Database Service (RDS). Amazon Aurora with PostgreSQL compatibility is also built using PostgreSQL. 
 
+- endpoint - When you connect to an Aurora cluster, the host name and port that you specify point to an intermediate handler called an endpoint. Aurora uses the endpoint mechanism to abstract these connections. Thus, you don't have to hardcode all the hostnames or write your own logic for load-balancing and rerouting connections when some DB instances aren't available.
+
+- Writer instance - A cluster endpoint (or writer endpoint) for an Aurora DB cluster connects to the current primary DB instance for that DB cluster. This endpoint is the only one that can perform write operations such as DDL statements. Because of this, the cluster endpoint is the one that you connect to when you first set up a cluster or when your cluster only contains a single DB instance.
+
+- Reader instance - A reader endpoint for an Aurora DB cluster provides load-balancing support for read-only connections to the DB cluster. Use the reader endpoint for read operations, such as queries. By processing those statements on the read-only Aurora Replicas, this endpoint reduces the overhead on the primary instance.
 ### Exercise
 
 Study : RDS and Aurora
@@ -52,7 +56,8 @@ Study : RDS and Aurora
 -[](https://www.youtube.com/watch?v=ciRbXZqBl7M)
 - [Aurora AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
 - [Aurora vs RDS](https://aws.amazon.com/rds/aurora/faqs/)
-- [alternative](https://www.g2.com/products/amazon-aurora/competitors/alternatives)
+- [alternative services](https://www.g2.com/products/amazon-aurora/competitors/alternatives)
+- [Getting started AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html)
 ### Overcome challanges
 
  I understood the concept by referring to the sources shared above.
@@ -61,4 +66,49 @@ Study : RDS and Aurora
 Alternatives and Market Competitors:
 
 Some of the alternatives and competitors of EFS are Oracle Database, Azure SQL Database, Google Cloud Spanner, and Microsoft SQL Server. 
+## Practical exercise:
+
+Below are the steps involved in Creating an RDS instance and connecting to it from an SQL client by following this Getting started tutorail from AWS. 
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html
+
+
+1. Creating the RDS instance
+
+![AWS-13-5-RDS](../00_includes/AWS-Week2/AWS-13-5/i2.png)
+
+2. Installing the MySQL workbench client to connect with the RDS instance
+
+![AWS-13-5-RDS](../00_includes/AWS-Week2/AWS-13-5/i3.png)
+
+3. Creating a security group with port 3306 open to connect from the MySQL client. Port 3306 is the default port MySQL database engine listens on
+
+![AWS-13-5-RDS](../00_includes/AWS-Week2/AWS-13-5/i4.png)
+
+4. Making RDS publicly accessible so that this can be accessed from the resources outside the VPC like the SQL workbench
+
+![AWS-13-5-RDS](../00_includes/AWS-Week2/AWS-13-5/i5.png)
+
+5. Applying the databases changes immediately
+
+![AWS-13-5-RDS](../00_includes/AWS-Week2/AWS-13-5/i6.png)
+
+6. Fetching the RDS writer information
+
+![AWS-13-5-RDS](../00_includes/AWS-Week2/AWS-13-5/i7.png)
+
+7. adding the RDS infromation for the mysql workbench connection
+
+![AWS-13-5-RDS](../00_includes/AWS-Week2/AWS-13-5/i8.png)
+
+8. Establishing the RDS connections
+
+![AWS-13-5-RDS](../00_includes/AWS-Week2/AWS-13-5/i9.png)
+
+9. Successfull connection to the RDS instance
+
+![AWS-13-5-RDS](../00_includes/AWS-Week2/AWS-13-5/i10.png)
+
+10. MySQL Client after connecting to the RDS instance, showing the database and tables
+
+![AWS-13-5-RDS](../00_includes/AWS-Week2/AWS-13-5/i11.png)
 

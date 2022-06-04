@@ -19,10 +19,6 @@ To summarise, the significant features of Elastic Beanstalk are:
 
 3. Elastic beanstalk handles the auto scaling of resources needed to support your deployed application as demand grows or shrinks.
 
-Elastic Beanstalk in association with EC2:
-
-When Elastic Beanstalk analyses your application and selects the resources that will be required. **When you deploy an application, Beanstalk will offer an EC2 instance**. It will also allow you to step in and select alternative resources that may be better suited to anticipated use cases it may not know about. For example you could select a higher spec EC2 instance type that better suits your needs. 
-
 ## Key terminology
 
 - Refer to summary above
@@ -44,7 +40,9 @@ Study : Elastic Beanstalk
 
 ### Results
  
-Elastic Beanstalk in association with S3:
+Elastic Beanstalk in association with EC2:
+
+When Elastic Beanstalk analyses your application and selects the resources that will be required. **When you deploy an application, Beanstalk will offer an EC2 instance**. It will also allow you to step in and select alternative resources that may be better suited to anticipated use cases it may not know about. For example you could select a higher spec EC2 instance type that better suits your needs. Elastic Beanstalk in association with S3:
 
 Additionally, **AWS Elastic Beanstalk stores application files and, optionally, server log files in Amazon S3**. If you are using the AWS Management Console, the AWS Toolkit for Visual Studio, or AWS Toolkit for Eclipse, an Amazon S3 bucket will be created in your account for you and the files you upload will be automatically copied from your local client to Amazon S3 
 

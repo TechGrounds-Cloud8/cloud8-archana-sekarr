@@ -28,7 +28,6 @@ Organizations of every type, size, and industry are using the cloud for a wide v
 
 - The total cost of ownership (TCO) - It is used to calculate the total cost of purchasing and operating a technology product or service over its useful life. It combines both direct and indirect costs. The TCO is important for evaluating technology costs that aren’t always reflected in upfront pricing. Your TCO is a great compliment to your business’s return on investment (ROI) as the ROI helps illuminate benefits that may not be readily apparent, such as improved employee productivity or increased customer satisfaction.
 
-
 ### Exercise
 Study:
 
@@ -38,7 +37,6 @@ Study:
 - EC2
 - Always free services
 3. Understand the differences between capex and opex
-
 ### Sources
 
 - [AWS pricing](https://aws.amazon.com/pricing/)

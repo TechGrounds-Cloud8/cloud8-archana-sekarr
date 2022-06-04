@@ -169,7 +169,7 @@ Exercise 4:
 
 Activity log after enabling the load test:
 
-I realized that there was a lot of delay on the creation of new servers, so I changed the Target tracking to a target of 30% average CPU utilisation instead of 60% as mentioned in the exercise and these were the results:
+I realized that there was a lot of delay on the creation of new servers, so I changed the Target tracking to a target of 30% average CPU utilisation instead of 60% as mentioned in the exercise to speeden up the process and these were the results:
  
 - Auto Scaling group notifications:
 
