@@ -17,7 +17,7 @@ Study : Support Plans
 
 ### Overcome challanges
 
- I understood the concept by referring to the sources shared above.
+I understood the concept by referring to the sources shared above.
 
 ### Results
  
