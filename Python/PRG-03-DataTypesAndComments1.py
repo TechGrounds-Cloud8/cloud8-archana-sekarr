@@ -17,6 +17,7 @@ print(type(c))
 print(type(d))
 # creating a new variable x
 x = b+d
-# printing the variable x
+# printing the variable x (I had to change the variable d to 18.5 instead of "18.5", as it is a floating number and not a string (error shown in the image below before making the change). --> 
+![PRG-03-DataTypesAndComments1](../00_includes/Python/PRG-03-DataTypesAndComments1.png))
 print(x)
 
