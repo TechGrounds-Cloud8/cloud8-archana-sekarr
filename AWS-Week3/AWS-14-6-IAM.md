@@ -61,7 +61,7 @@ Study : IAM
 
 ### Results
  
-Now, shown below are steps on how groups and users are created and granting different permissions.
+ Shown below are steps on how groups and users are created and granting different permissions.
 
 1. Creating an S3 admin group.
 
