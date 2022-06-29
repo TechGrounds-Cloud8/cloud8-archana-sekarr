@@ -1,6 +1,3 @@
-from multiprocessing.sharedctypes import Value
-from tkinter import Variable
-
 
 # Assigning a value to the variable
 x = 0
