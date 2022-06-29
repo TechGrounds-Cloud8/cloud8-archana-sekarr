@@ -1,48 +1,25 @@
-# Support Plans
 
- With hundreds of services and features, AWS provides a combination of various tools, technologies, programs and human resources to proactively help their customers. In this assignment, we will learn about the different support plans offered by AWS for their customers to choose based on their needs.
+# storing the user input in it's respective variable
+a = input("Enter your first name : ")
+b = input("Enter your last name : ")
+c = input("Enter your job title ; ")
+d = input("Enter your company name : ")
 
-## Key terminology
+# Creating an empty user information dictionary.
+userinfodict = {}
 
-N/A
+# adding 4 items to the dictionary created by using the update() method.
+userinfodict.update({"firstname" : a})
+userinfodict.update({"lastname" : b})
+userinfodict.update({"jobtitle" : c})
+userinfodict.update({"company" : d})
 
-### Exercise
+# using for loop to print the kay-value pairs in the dictionary 
+for key in userinfodict:
+    print(key,":", userinfodict[key])
 
-Study : Support Plans
-
-### Sources
-
-- [Support plans aws](https://aws.amazon.com/premiumsupport/plans/)
-- [Suuport plans](https://jayendrapatil.com/aws-support-plans/)
-
-### Overcome challanges
-
- I understood the concept by referring to the sources shared above.
-
-### Results
- 
-AWS support plans are designed to give the right mix of tools and access to expertise for it's clients to optimize performance, manage risk, and keep costs under control which can also make the customer experience successful.
-
-AWS provides 5 AWS support plans with additional features and extra costs based on the support plan chosen.
-
-1. Basic
-2. Developer
-3. Business
-4. Enterprise On-Ramp
-5. Enterprise
-
-1. Basic:
-
-This basic support is included for all AWS customers and includes:
-
-- Customer Service and Communities - 24×7 access to customer service, documentation, whitepapers, and support forums
-- AWS Trusted Advisor - Access to 6 core Trusted Advisor checks and guidance to provision your resources following best practices to increase performance and improve security.
-- AWS Personal Health Dashboard - Access to Personal Health Dashboard. A personalized view of the health of AWS services, and alerts when your resources are impacted.
-
-The other 4 support plans are explained below:
-
-![AWS-14-2-SupportPlans](../00_includes/AWS-Week3/AWS-14-2/i1.png)
-
-![AWS-14-2-SupportPlans](../00_includes/AWS-Week3/AWS-14-2/i2.png)
-
-![AWS-14-2-SupportPlans](../00_includes/AWS-Week3/AWS-14-2/i3.png)
+# writing the contents of the dictionary into the csv file. 
+# opening the file in append mode, "a", so that we dont overwrite the existing information in the file.
+with open('test.csv', 'a') as f:
+    for key in userinfodict.keys():
+        f.write("%s,%s\n"%(key,userinfodict[key]))
