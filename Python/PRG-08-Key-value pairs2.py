@@ -1,3 +1,4 @@
+import csv
 
 # storing the user input in it's respective variable
 a = input("Enter your first name : ")
@@ -18,8 +19,15 @@ userinfodict.update({"company" : d})
 for key in userinfodict:
     print(key,":", userinfodict[key])
 
+# creating a csv_header; the header name should match the keys in the dictionary.
+csv_header = ['firstname','lastname','jobtitle', 'company']
+
 # writing the contents of the dictionary into the csv file. 
 # opening the file in append mode, "a", so that we dont overwrite the existing information in the file.
-with open('test.csv', 'a') as f:
-    for key in userinfodict.keys():
-        f.write("%s,%s\n"%(key,userinfodict[key]))
+with open('./test.csv', 'a') as f:
+    writer = csv.DictWriter(f, fieldnames=csv_header)
+    # writing a row with the headers mentioned in the csv_header variable created above
+    writer.writeheader()
+    # writing a row with the values from the dictionary
+    writer.writerow(userinfodict)
+    f.close()
