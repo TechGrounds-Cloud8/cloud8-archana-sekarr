@@ -1,6 +1,6 @@
 # Overall Project Requirements
 
-A company wants to transition to cloud. I am responsible for moving the current servers to the cloud and for automating the deployment of it's infrastructure. This file shows the requirements of the project and as a Junior engineer, what is expected from me to complete this project in time and within the budget specified.
+A company wants to transition to cloud. I am responsible for moving the current servers to the cloud and for automating the deployment of it's infrastructure. This document shows the requirements of the project and as a Junior engineer, what is expected from me to complete this project in time and within the budget specified.
 
 
 The current architecture of the application as analyzed by a previous team is shown below.
