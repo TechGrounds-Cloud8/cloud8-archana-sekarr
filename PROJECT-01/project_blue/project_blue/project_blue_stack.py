@@ -48,7 +48,6 @@ class ProjectBlueStack(Stack):
                              block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
                              encryption=s3.BucketEncryption.S3_MANAGED)
 
-
         # Creation of Application web server
         application_web_server = ec2.Instance(self, 'application-server-ec2',
                                               instance_name='app-server-ec2',
@@ -76,7 +75,7 @@ class ProjectBlueStack(Stack):
         application_web_server.user_data.add_execute_file_command(
             file_path=localPath,
         )
-                                              
+
         s3Bucket.grant_read(application_web_server)
 
         # Creating a security group to attach with the application server
@@ -99,7 +98,7 @@ class ProjectBlueStack(Stack):
         # allowing access to port 22 only from the admin's home ip
         application_web_server_security_group.add_ingress_rule(
             # TODO revert the change to use the admin ip
-            peer= ec2.Peer.ipv4("77.163.188.237/32"),
+            peer=ec2.Peer.ipv4("77.163.188.237/32"),
             connection=ec2.Port.tcp(22),
             description="admin home ip to connect see the application webserver",
         )
@@ -147,13 +146,22 @@ class ProjectBlueStack(Stack):
             id="management-vpc-id-ingress"
         )
 
+        management_network_nacl.add_entry(
+            cidr=ec2.AclCidr.ipv4("77.163.188.237/24"),
+            direction=ec2.TrafficDirection.INGRESS,
+            rule_number=250,
+            traffic=ec2.AclTraffic.tcp_port(3389),
+            network_acl_entry_name="allowing rdp ingress",
+            rule_action=ec2.Action.ALLOW,
+            id="management-vpc-id-ingress-win-rdp"
+        )
         # creating entry to add egress on all ports to admin home ip for ssh on port 22
         management_network_nacl.add_entry(
             cidr=ec2.AclCidr.ipv4("77.163.188.237/24"),
             direction=ec2.TrafficDirection.EGRESS,
             rule_number=300,
             traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),
-            network_acl_entry_name="allowing ssh egress",
+            network_acl_entry_name="allowing ssh and rdp egress",
             rule_action=ec2.Action.ALLOW,
             id="management-vpc-id-egress"
         )
@@ -175,4 +183,33 @@ class ProjectBlueStack(Stack):
         # adding the created security group to the management server ec2
         management_server.add_security_group(management_security_group)
 
+        management_server_windows = ec2.Instance(self, 'management-server-ec2-windows',
+                                                 instance_name='mgmt-server-ec2-win',
+                                                 instance_type=ec2.InstanceType.of(
+                                                     ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+                                                 vpc=managementVpc,
+                                                 vpc_subnets=ec2.SubnetSelection(
+                                                     subnet_type=ec2.SubnetType.PUBLIC,
+                                                     # availability_zones=['eu-central-1a']
+                                                 ),
+                                                 # link for machine image
+                                                 machine_image=ec2.WindowsImage(
+                                                     version=ec2.WindowsVersion.WINDOWS_SERVER_2019_ENGLISH_FULL_BASE),
+                                                 key_name='project-blue-key-pair'
+                                                 )
+        # Creating a security group to attach with the management server
+        management_security_group_win = ec2.SecurityGroup(self,
+                                                      'management-server-win-sg',
+                                                      vpc=managementVpc,
+                                                      allow_all_outbound=True,
+                                                      security_group_name="management-server-win-sg",
+                                                      )
+        # allowing access only from the admin's home ip
+        management_security_group_win.add_ingress_rule(
+            peer=ec2.Peer.ipv4("77.163.188.237/32"),
+            connection=ec2.Port.tcp(3389),
+            description="admin home ip to connect with the management win server",
+        )
 
+        # adding the created security group to the management server ec2
+        management_server_windows.add_security_group(management_security_group_win)        

@@ -7,7 +7,7 @@
 
 If we deploy both in the same region, cant we just have just one VPC to reduce the operational overhead?
 
-4. you have mentioned usage of VM disks. What are your storage requirements for your app and management server? How big a disk size should we have? (Storage GB size) There are multiple storage types? 
+4. They have mentioned usage of VM disks. What are your storage requirements for your app and management server? How big a disk size should we have? (Storage GB size) There are multiple storage types? 
 
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
 
