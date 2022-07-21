@@ -45,8 +45,10 @@ class ProjectBlueStack(Stack):
 
         # creating an S3 bucket to store the user data script
         s3Bucket = s3.Bucket(self, 'admin-server-files',
+
                              block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
                              encryption=s3.BucketEncryption.S3_MANAGED)
+
 
         # Creation of Application web server
         application_web_server = ec2.Instance(self, 'application-server-ec2',
@@ -78,6 +80,7 @@ class ProjectBlueStack(Stack):
 
         s3Bucket.grant_read(application_web_server)
 
+
         # Creating a security group to attach with the application server
         application_web_server_security_group = ec2.SecurityGroup(self,
                                                                   'application-server-sg',
@@ -102,11 +105,46 @@ class ProjectBlueStack(Stack):
             connection=ec2.Port.tcp(22),
             description="admin home ip to connect see the application webserver",
         )
+        
+        # Creating NACL on the application servers subnet to allow traffic over port 80 (TODO for now only from admin's home IP)
+
+        application_network_nacl = ec2.NetworkAcl(self, id='application-nacl',
+                                                 vpc=applicationVpc,
+                                                 network_acl_name="application-vpc-nacl",
+                                                 subnet_selection=ec2.SubnetSelection(
+                                                     subnet_type=ec2.SubnetType.PUBLIC
+                                                 )
+                                                 )
+
+        # creating entry to add ingress on port 80 from the admins home ip
+        management_network_nacl.add_entry(
+            cidr=ec2.AclCidr.ipv4("77.163.188.237/24"),
+            direction=ec2.TrafficDirection.INGRESS,
+            rule_number=200,
+            traffic=ec2.AclTraffic.tcp_port(80),
+            network_acl_entry_name="allowing ingress on port 80",
+            rule_action=ec2.Action.ALLOW,
+            id="application-vpc-id-ingress"
+        )
+
+        
+        # creating entry to add egress on all ports to admin home ip from port 80
+        application_network_nacl.add_entry(
+            cidr=ec2.AclCidr.ipv4("77.163.188.237/24"),
+            direction=ec2.TrafficDirection.EGRESS,
+            rule_number=300,
+            traffic=ec2.AclTraffic.tcp_port(80),
+            network_acl_entry_name="allowing egress on port 80",
+            rule_action=ec2.Action.ALLOW,
+            id="application-vpc-id-egress"
+        )
+
 
         # adding the created security group to the application server
         application_web_server.add_security_group(
             application_web_server_security_group)
 
+        
         # Creation of Management server
         management_server = ec2.Instance(self, 'management-server-ec2',
                                          instance_name='mgmt-server-ec2',
@@ -211,5 +249,7 @@ class ProjectBlueStack(Stack):
             description="admin home ip to connect with the management win server",
         )
 
+
         # adding the created security group to the management server ec2
-        management_server_windows.add_security_group(management_security_group_win)        
+        management_server_windows.add_security_group(management_security_group_win)      
+
