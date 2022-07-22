@@ -1,9 +1,12 @@
 from operator import ge
 from constructs import Construct
 from aws_cdk import (
+    Duration,
     Stack,
     aws_ec2 as ec2,
-    aws_s3 as s3
+    aws_s3 as s3,
+    aws_backup as backup_service,
+    aws_events as events
 )
 
 
@@ -55,7 +58,7 @@ class ProjectBlueStack(Stack):
                                               instance_name='app-server-ec2',
                                               instance_type=ec2.InstanceType.of(
                                                     ec2.InstanceClass.T3, ec2.InstanceSize.NANO),
-                                              vpc=applicationVpc,
+                                              vpc=applicationVpc,                                              
                                               vpc_subnets=ec2.SubnetSelection(
                                                   subnet_type=ec2.SubnetType.PUBLIC,
                                                   # availability_zones=['eu-central-1a']
@@ -65,9 +68,13 @@ class ProjectBlueStack(Stack):
                                               machine_image=ec2.AmazonLinuxImage(
                                                   generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
                                               ),
+                                              # Adding a block device and enabling encryption on the ebs volume created by default
+                                              block_devices=[
+                                                ec2.BlockDevice(device_name="/dev/xvda",
+                                              volume=ec2.BlockDeviceVolume.ebs(20,encrypted=True))],
                                               key_name='project-blue-key-pair',
                                               )
-
+        
         localPath = application_web_server.user_data.add_s3_download_command(
             bucket=s3Bucket,
             bucket_key="userdata_configuration.sh",
@@ -117,7 +124,7 @@ class ProjectBlueStack(Stack):
                                                  )
 
         # creating entry to add ingress on port 80 from the admins home ip
-        management_network_nacl.add_entry(
+        application_network_nacl.add_entry(
             cidr=ec2.AclCidr.ipv4("77.163.188.237/24"),
             direction=ec2.TrafficDirection.INGRESS,
             rule_number=200,
@@ -253,3 +260,16 @@ class ProjectBlueStack(Stack):
         # adding the created security group to the management server ec2
         management_server_windows.add_security_group(management_security_group_win)      
 
+
+        # back up plan for the web server - daily back up and retention for 7 days
+        backup_plan =  backup_service.BackupPlan(self, "server_backup")
+        # created a custom rule that runs ever day at 8 and takes a backup daily. The retention is set to 7 days 
+        backup_plan_rule = backup_service.BackupPlanRule(
+        delete_after=Duration.days(7),
+        schedule_expression=events.Schedule.cron(minute='0', hour= '8'))
+        backup_plan.add_rule(backup_plan_rule)
+        
+        # Configuring the resource that should be backedup 
+        backup_plan.add_selection(
+        id="backup-selection-id",
+        resources=[backup_service.BackupResource.from_ec2_instance(application_web_server)])
