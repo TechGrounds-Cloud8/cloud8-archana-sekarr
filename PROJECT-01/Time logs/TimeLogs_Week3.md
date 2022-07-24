@@ -61,26 +61,21 @@ I had to think and read a lot to understand why we use AWS back up and discussin
 
 ### Daily Report
 
-
+Created back up and encryption for the server
 
 
 ### Challenges
 
-
+It took a while to figure out how to give custom duration and retention for the back up plan
 
 
 ### Solutions
 
-
-
-
+I had to add custom rules to make the back up.
 
 ### Learnings
 
-
-
-
-
+Read the documentation carefully before making assumptions.
 
 ## Log 22-07-2022
 

@@ -5,6 +5,6 @@ import aws_cdk as cdk
 from project_blue.project_blue_stack import ProjectBlueStack
 
 app = cdk.App()
-ProjectBlueStack(app, "project-blue")
+ProjectBlueStack(app, "project-blue-version-1-0")
 
 app.synth()
