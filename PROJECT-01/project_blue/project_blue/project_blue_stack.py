@@ -353,7 +353,10 @@ class ProjectBlueStack(Stack):
                                                  # link for machine image
                                                  machine_image=ec2.WindowsImage(
                                                      version=ec2.WindowsVersion.WINDOWS_SERVER_2019_ENGLISH_FULL_BASE),
-                                                 key_name='project-blue-key-pair'
+                                                 key_name='project-blue-key-pair',
+                                                 block_devices=[
+                                                  ec2.BlockDevice(device_name="/dev/xvda",
+                                                                  volume=ec2.BlockDeviceVolume.ebs(10, encrypted=True))],
                                                  )
 
         # ----------------------------- SG for managment win server -----------------------------

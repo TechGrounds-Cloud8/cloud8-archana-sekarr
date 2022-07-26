@@ -1,5 +1,5 @@
 # LINUX
-- LINUX is an operating system like Windows or Mac 
+- LINUX is a free, open-source operating system like Windows or Mac 
 - Linux can be run in your own computer using a virtual machine (VM)
 
 ## Key terminology
