@@ -79,22 +79,19 @@ Read the documentation carefully before making assumptions.
 
 ## Log 22-07-2022
 
-
 ### Daily Report
 
-
-
+Created index.html file and working on using rdp to access the windows server.
 
 ### Challenges
 
-
-
+When i tried to install putty. I was not able to connect to the internet 
 
 ### Solutions
 
 
-
-
+I realized that my nacl rules were blocking me so I had to change the nacl rules by allowing all outbound traffic to the internet.
 
 ### Learnings
 
+As i mentioned above, I took a lot of time to figure out this.
