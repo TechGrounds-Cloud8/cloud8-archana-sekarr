@@ -181,15 +181,15 @@ class ProjectBlueStack(Stack):
         # )
 
         # TODO remove after the ssh access is configured from the management server
-        application_network_nacl.add_entry(
-            cidr=ec2.AclCidr.any_ipv4(),
-            direction=ec2.TrafficDirection.INGRESS,
-            rule_number=300,
-            traffic=ec2.AclTraffic.tcp_port(22),
-            network_acl_entry_name="allowing rdp ingress",
-            rule_action=ec2.Action.ALLOW,
-            id="application-vpc-ingress-ssh"
-        )
+        # application_network_nacl.add_entry(
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     direction=ec2.TrafficDirection.INGRESS,
+        #     rule_number=300,
+        #     traffic=ec2.AclTraffic.tcp_port(22),
+        #     network_acl_entry_name="allowing ssh ingress",
+        #     rule_action=ec2.Action.ALLOW,
+        #     id="application-vpc-ingress-ssh"
+        # )
 
         # opening up the nacl on the app server to allow all outbound traffic to allow yum updates to happen when the user data script runs
         application_network_nacl.add_entry(
@@ -250,22 +250,22 @@ class ProjectBlueStack(Stack):
 
         # ----------------------------- ec2 for managment server -----------------------------
         # Creation of Management server
-        management_server = ec2.Instance(self, 'management-server-ec2',
-                                         instance_name='mgmt-server-ec2',
-                                         instance_type=ec2.InstanceType.of(
-                                             ec2.InstanceClass.T3, ec2.InstanceSize.NANO),
-                                         vpc=managementVpc,
-                                         vpc_subnets=ec2.SubnetSelection(
-                                             subnet_type=ec2.SubnetType.PUBLIC,
-                                             # availability_zones=['eu-central-1a']
-                                         ),
-                                         # link for machine image
-                                         # https://bobbyhadz.com/blog/aws-cdk-ec2-instance-example
-                                         machine_image=ec2.AmazonLinuxImage(
-                                             generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
-                                         ),
-                                         key_name='project-blue-key-pair'
-                                         )
+        # management_server = ec2.Instance(self, 'management-server-ec2',
+        #                                  instance_name='mgmt-server-ec2',
+        #                                  instance_type=ec2.InstanceType.of(
+        #                                      ec2.InstanceClass.T3, ec2.InstanceSize.NANO),
+        #                                  vpc=managementVpc,
+        #                                  vpc_subnets=ec2.SubnetSelection(
+        #                                      subnet_type=ec2.SubnetType.PUBLIC,
+        #                                      # availability_zones=['eu-central-1a']
+        #                                  ),
+        #                                  # link for machine image
+        #                                  # https://bobbyhadz.com/blog/aws-cdk-ec2-instance-example
+        #                                  machine_image=ec2.AmazonLinuxImage(
+        #                                      generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
+        #                                  ),
+        #                                  key_name='project-blue-key-pair'
+        #                                  )
 
         # ----------------------------- NACL for managment server -----------------------------
         # Creating NACL on the management servers subnet to allow traffic over port 22 only from the admin's home ip
@@ -323,21 +323,21 @@ class ProjectBlueStack(Stack):
         # ----------------------------- SG for managment server -----------------------------
 
         # Creating a security group to attach with the management server
-        management_security_group = ec2.SecurityGroup(self,
-                                                      'management-server-sg',
-                                                      vpc=managementVpc,
-                                                      allow_all_outbound=True,
-                                                      security_group_name="management-server-sg",
-                                                      )
-        # allowing access only from the admin's home ip
-        management_security_group.add_ingress_rule(
-            peer=ec2.Peer.ipv4("77.163.188.237/32"),
-            connection=ec2.Port.tcp(22),
-            description="admin home ip to connect with the management server",
-        )
+        # management_security_group = ec2.SecurityGroup(self,
+        #                                               'management-server-sg',
+        #                                               vpc=managementVpc,
+        #                                               allow_all_outbound=True,
+        #                                               security_group_name="management-server-sg",
+        #                                               )
+        # # allowing access only from the admin's home ip
+        # management_security_group.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("77.163.188.237/32"),
+        #     connection=ec2.Port.tcp(22),
+        #     description="admin home ip to connect with the management server",
+        # )
 
-        # adding the created security group to the management server ec2
-        management_server.add_security_group(management_security_group)
+        # # adding the created security group to the management server ec2
+        # management_server.add_security_group(management_security_group)
 
         # ----------------------------- Ec2 for managment win server -----------------------------
 
@@ -411,6 +411,5 @@ class ProjectBlueStack(Stack):
         backup_plan.add_selection(
             id="backup-selection-id",
             resources=[backup_service.BackupResource.from_ec2_instance(application_web_server)])
-
 
         
