@@ -180,16 +180,15 @@ class ProjectBlueStack(Stack):
         #     id="application-vpc-id-egress"
         # )
 
-        # TODO remove after the ssh access is configured from the management server
-        # application_network_nacl.add_entry(
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     direction=ec2.TrafficDirection.INGRESS,
-        #     rule_number=300,
-        #     traffic=ec2.AclTraffic.tcp_port(22),
-        #     network_acl_entry_name="allowing ssh ingress",
-        #     rule_action=ec2.Action.ALLOW,
-        #     id="application-vpc-ingress-ssh"
-        # )
+        application_network_nacl.add_entry(
+            cidr=ec2.AclCidr.any_ipv4(),
+            direction=ec2.TrafficDirection.INGRESS,
+            rule_number=300,
+            traffic=ec2.AclTraffic.tcp_port(22),
+            network_acl_entry_name="allowing ssh ingress",
+            rule_action=ec2.Action.ALLOW,
+            id="application-vpc-ingress-ssh"
+        )
 
         # opening up the nacl on the app server to allow all outbound traffic to allow yum updates to happen when the user data script runs
         application_network_nacl.add_entry(
