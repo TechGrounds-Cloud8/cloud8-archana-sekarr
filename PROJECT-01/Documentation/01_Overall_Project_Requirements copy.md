@@ -56,7 +56,7 @@ This document will contain information about the services that i will be using a
 
 This file is used to keep track of the day and what obstactles I faced along with the solutions indicated in a single sentence(as shown in the template below).
 
-![01_Overall_Project_Requirements](../00_includes/PROJECT_01/02_Time_logs.png)
+![01_Overall_Project_Requirements](../../00_includes/PROJECT_01/01_Overall_Project_Requirements.png)
 
 5. Final presentation
 
