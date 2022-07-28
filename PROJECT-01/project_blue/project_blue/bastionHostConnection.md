@@ -10,4 +10,8 @@ step 2: Test the ssh access to the windows server
 
 step 3: Using the ssh proxy command to jump into the application server
 
- ssh -i "project-blue-keypai-newmac.pem" -J Administrator@ec2-3-70-223-42.eu-central-1.compute.amazonaws.com ec2-user@10.20.20.36
+ ssh -i "project-blue-keypair.pem" -J Administrator@ec2-3-70-223-42.eu-central-1.compute.amazonaws.com ec2-user@10.20.20.36
+
+ ssh Administrator@ec2-52-57-57-0.eu-central-1.compute.amazonaws.com
+
+  ssh -i "project-blue-key-pair.pem" -J Administrator@ec2-52-57-57-0.eu-central-1.compute.amazonaws.com ec2-user@10.20.20.29

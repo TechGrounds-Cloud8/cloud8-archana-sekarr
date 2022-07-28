@@ -7,22 +7,9 @@ In this phase of the project, high availability is not part of the requirements,
 
 I chose the eu-central-1 region because it is the closest available region to the customer.
 
-## VPC's
-
-
-
 ## EC2
 
 I chose free tier instances such as t3.nano and t2.micro for this phase of the project. This can be upgraded based on the project's future requirements.
-
-### Web server
-
-
-
-### Management server
-
-
-
 
 ## Storage
 
@@ -30,4 +17,4 @@ S3 encryption at rest is enabled to ensure the user data script is encrypted at 
 
 ## Backup 
 
-The created vault is also encrypted at rest to ensure data is safe. 
+The created vault is also encrypted at rest to ensure data is safe. And back up is

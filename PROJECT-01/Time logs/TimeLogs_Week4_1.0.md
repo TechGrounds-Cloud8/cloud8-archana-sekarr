@@ -11,7 +11,6 @@ Initially i was trying to log into the web server using putty client which was q
 
 ### Solutions
 
-
 With the help of my teammates I learnt that i can use the ssh proxy command to connect to the web server via the admin server. Then i started to install ssh server and ssh client on the windows instance. After that i was able to ssh into the application server in a simple way instead of using RDP. In Addition, i had to add the necessary rules in nacl to enable port 22.
 
 ### Learnings
@@ -29,9 +28,7 @@ Not that many challenges today.
 
 ### Solutions
 
-
 -
-
 ### Learnings
 
 I tried to look up for the information to figure out the above and learnt above Security from the knowledge checks.
@@ -41,4 +38,15 @@ I tried to look up for the information to figure out the above and learnt above 
 ### Daily Report
 
 Working on the design and decision documentation. Tried to clear up the codes.
+
 ### Challenges
+
+- My codes were quite misaligned. 
+
+### Solutions
+
+- Should learn to clean up codes and how to format so that I dont encounter this for version1.1
+
+### Learnings
+
+- It was nice to revisit everything I had done scratch for this project to prepare the documentation. Quite proud of myself :D

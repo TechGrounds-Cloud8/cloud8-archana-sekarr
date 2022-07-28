@@ -1,2 +1,7 @@
 
-# Project Blue - 
+# Project 1.0 
+
+Short description:
+
+
+
