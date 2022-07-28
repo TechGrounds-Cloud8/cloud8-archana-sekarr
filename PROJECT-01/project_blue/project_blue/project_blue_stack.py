@@ -341,22 +341,22 @@ class ProjectBlueStack(Stack):
         # ----------------------------- Ec2 for managment win server -----------------------------
 
         management_server_windows = ec2.Instance(self, 'management-server-ec2-windows',
-                                                 instance_name='mgmt-server-ec2-win',
-                                                 instance_type=ec2.InstanceType.of(
-                                                     ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-                                                 vpc=managementVpc,
-                                                 vpc_subnets=ec2.SubnetSelection(
-                                                     subnet_type=ec2.SubnetType.PUBLIC,
-                                                     # availability_zones=['eu-central-1a']
-                                                 ),
-                                                 # link for machine image
-                                                 machine_image=ec2.WindowsImage(
-                                                     version=ec2.WindowsVersion.WINDOWS_SERVER_2019_ENGLISH_FULL_BASE),
-                                                 key_name='project-blue-key-pair',
-                                                 block_devices=[
-                                                  ec2.BlockDevice(device_name="/dev/xvda",
-                                                                  volume=ec2.BlockDeviceVolume.ebs(10, encrypted=True))],
-                                                 )
+            instance_name='mgmt-server-ec2-win',
+            instance_type=ec2.InstanceType.of(
+                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            vpc=managementVpc,
+            vpc_subnets=ec2.SubnetSelection(
+                subnet_type=ec2.SubnetType.PUBLIC,
+                # availability_zones=['eu-central-1a']
+            ),
+            # link for machine image
+            machine_image=ec2.WindowsImage(
+                version=ec2.WindowsVersion.WINDOWS_SERVER_2019_ENGLISH_FULL_BASE),
+            key_name='project-blue-key-pair',
+            block_devices=[
+            ec2.BlockDevice(device_name="/dev/xvda",
+                            volume=ec2.BlockDeviceVolume.ebs(10, encrypted=True))],
+            )
 
         # ----------------------------- SG for managment win server -----------------------------
 
@@ -388,19 +388,17 @@ class ProjectBlueStack(Stack):
 
 
         # ---------------------------------- adding a vault explicitly --------------------------------------------
-        # TODO ask question on this ?
-        # By default a backup vault is created with the BackupPlan when its not mentioned explicity!. So why should be
-        # we create one explicity and mention it here ??
-
         # code to create the backup valut explicitly
-        # app_server_backup_vault = backup_service.BackupVault(self, "server_backup_vault",
-        # backup_vault_name="app-server-backup-vault")
+        app_server_backup_vault = backup_service.BackupVault(
+            self, "server_backup_vault",
+            backup_vault_name="app-server-backup-vault"
+        )
 
         # back up plan for the web server - daily back up and retention for 7 days
-        backup_plan = backup_service.BackupPlan(self, "server_backup",
-                                                # TODO uncomment the line below if decided to use the backup valut created above
-                                                # backup_vault= app_server_backup_vault
-                                                )
+        backup_plan = backup_service.BackupPlan(
+            self, "server_backup",
+            backup_vault= app_server_backup_vault
+        )
 
         
         # created a custom rule that runs ever day at 8 and takes a backup daily. The retention is set to 7 days
@@ -412,6 +410,7 @@ class ProjectBlueStack(Stack):
         # Configuring the resource that should be backedup
         backup_plan.add_selection(
             id="backup-selection-id",
-            resources=[backup_service.BackupResource.from_ec2_instance(application_web_server)])
-
-        
+            resources=[ 
+                backup_service.BackupResource.from_ec2_instance(
+                    application_web_server)]
+        )
