@@ -17,3 +17,28 @@ With the help of my teammates I learnt that i can use the ssh proxy command to c
 ### Learnings
 
 As i mentioned above, I took a lot of time to figure out this.
+
+## Log 26-07-2022
+
+### Daily Report
+
+created encryption for admin server and ensuring that i can only ssh to the admin server
+### Challenges
+
+Not that many challenges today.
+
+### Solutions
+
+
+-
+
+### Learnings
+
+I tried to look up for the information to figure out the above and learnt above Security from the knowledge checks.
+
+## Log 27-07-2022
+
+### Daily Report
+
+Working on the design and decision documentation. Tried to clear up the codes.
+### Challenges
