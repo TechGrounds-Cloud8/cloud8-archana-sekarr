@@ -41,12 +41,49 @@ Working on the design and decision documentation. Tried to clear up the codes.
 
 ### Challenges
 
-- My codes were quite misaligned. 
+My codes were quite misaligned. 
 
 ### Solutions
 
-- Should learn to clean up codes and how to format so that I dont encounter this for version1.1
+Should learn to clean up codes and how to format so that I dont encounter this for version1.1
 
 ### Learnings
 
-- It was nice to revisit everything I had done scratch for this project to prepare the documentation. Quite proud of myself :D
+It was nice to revisit everything I had done scratch for this project to prepare the documentation. Quite proud of myself :D
+
+## Log 28-07-2022
+
+### Daily Report
+
+Finished all documentation and practised for tomorrow's sprint review
+
+### Challenges
+
+ While presenting, i forgot to share my codes often due to nervousness.
+
+### Solutions
+
+ Practised couple of times to overcome the challenges
+
+### Learnings
+
+ I went through the KC labs and completed all the Knowledge checks.
+
+
+## Log 29-07-2022
+
+### Daily Report
+
+Sprint review for version 1.0
+
+### Challenges
+
+
+none
+
+### Solutions
+
+none
+### Learnings
+
+Preparation for the presentation and clean-up codes.

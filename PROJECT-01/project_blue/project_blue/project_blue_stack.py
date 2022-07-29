@@ -81,44 +81,44 @@ class ProjectBlueStack(Stack):
                              auto_delete_objects=True)
 
         uploadScriptsToS3 = s3_deployment.BucketDeployment(self, 's3-bucket-deployment',
-                                                           destination_bucket=s3Bucket,
-                                                           sources=[s3_deployment.Source.asset(os.path.join(
-                                                               os.path.dirname("."), "user_config"))]
-                                                           )
+            destination_bucket=s3Bucket,
+            sources=[s3_deployment.Source.asset(os.path.join(
+                os.path.dirname("."), "user_config"))]
+            )
 
         # ----------------------------- Ec2 instance for application web server -----------------------------
 
         # Creation of Application web server
         application_web_server = ec2.Instance(self, 'application-server-ec2',
-                                              instance_name='app-server-ec2',
-                                              instance_type=ec2.InstanceType.of(
-                                                    ec2.InstanceClass.T3, ec2.InstanceSize.NANO),
-                                              vpc=applicationVpc,
-                                              vpc_subnets=ec2.SubnetSelection(
-                                                  subnet_type=ec2.SubnetType.PUBLIC,
-                                                  # availability_zones=['eu-central-1a']
-                                              ),
-                                              # link for machine image
-                                              # https://bobbyhadz.com/blog/aws-cdk-ec2-instance-example
-                                              machine_image=ec2.AmazonLinuxImage(
-                                                  generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
-                                              ),
-                                              # Adding a block device and enabling encryption on the ebs volume created by default
-                                              block_devices=[
-                                                  ec2.BlockDevice(device_name="/dev/xvda",
-                                                                  volume=ec2.BlockDeviceVolume.ebs(20, encrypted=True))],
-                                              key_name='project-blue-key-pair'
-                                              )
+            instance_name='app-server-ec2',
+            instance_type=ec2.InstanceType.of(
+                ec2.InstanceClass.T3, ec2.InstanceSize.NANO),
+            vpc=applicationVpc,
+            vpc_subnets=ec2.SubnetSelection(
+                subnet_type=ec2.SubnetType.PUBLIC,
+               
+            ),
+            # link for machine image
+            # https://bobbyhadz.com/blog/aws-cdk-ec2-instance-example
+            machine_image=ec2.AmazonLinuxImage(
+                generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
+            ),
+            # Adding a block device and enabling encryption on the ebs volume created by default
+            block_devices=[
+                ec2.BlockDevice(device_name="/dev/xvda",
+                                volume=ec2.BlockDeviceVolume.ebs(20, encrypted=True))],
+            key_name='project-blue-key-pair'
+        )
 
         # ----------------------------- SG for application web server -----------------------------
 
         # Creating a security group to attach with the application server
         application_web_server_security_group = ec2.SecurityGroup(self,
-                                                                  'application-server-sg',
-                                                                  vpc=applicationVpc,
-                                                                  allow_all_outbound=True,
-                                                                  security_group_name="application-server-sg",
-                                                                  )
+            'application-server-sg',
+            vpc=applicationVpc,
+            allow_all_outbound=True,
+            security_group_name="application-server-sg",
+        )
         # allowing access to port 80 only from the admin's home ip
         application_web_server_security_group.add_ingress_rule(
             peer=ec2.Peer.any_ipv4(),
@@ -133,10 +133,8 @@ class ProjectBlueStack(Stack):
             description="admin home ip https to connect see the application webserver",
         )
 
-        #  TODO remove this after testing
         # allowing access to port 22 only from the admin's home ip
         application_web_server_security_group.add_ingress_rule(
-            # TODO revert the change to use the admin ip
             peer=ec2.Peer.any_ipv4(),
             connection=ec2.Port.tcp(22),
             description="admin home ip to connect see the application webserver",
@@ -151,12 +149,10 @@ class ProjectBlueStack(Stack):
         # Creating NACL on the application servers subnet to allow traffic over port 80 (TODO for now only from admin's home IP)
 
         application_network_nacl = ec2.NetworkAcl(self, id='application-nacl',
-                                                  vpc=applicationVpc,
-                                                  network_acl_name="application-vpc-nacl",
-                                                  subnet_selection=ec2.SubnetSelection(
-                                                      subnet_type=ec2.SubnetType.PUBLIC
-                                                  )
-                                                  )
+            vpc=applicationVpc,
+            network_acl_name="application-vpc-nacl",
+            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+        )
 
         # creating entry to add ingress on port 80 from the admins home ip
         application_network_nacl.add_entry(
@@ -168,17 +164,6 @@ class ProjectBlueStack(Stack):
             rule_action=ec2.Action.ALLOW,
             id="application-vpc-id-ingress"
         )
-
-        # # creating entry to add egress on all ports to admin home ip from port 80
-        # application_network_nacl.add_entry(
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     direction=ec2.TrafficDirection.EGRESS,
-        #     rule_number=200,
-        #     traffic=ec2.AclTraffic.tcp_port(80),
-        #     network_acl_entry_name="allowing egress on port 80",
-        #     rule_action=ec2.Action.ALLOW,
-        #     id="application-vpc-id-egress"
-        # )
 
         application_network_nacl.add_entry(
             cidr=ec2.AclCidr.any_ipv4(),
@@ -202,7 +187,7 @@ class ProjectBlueStack(Stack):
         )
 
         application_network_nacl.add_entry(
-            cidr=ec2.AclCidr.any_ipv4(),
+            cidr=ec2.AclCidr.any_ipv4(),    
             direction=ec2.TrafficDirection.INGRESS,
             rule_number=400,
             traffic=ec2.AclTraffic.tcp_port(443),
@@ -210,16 +195,6 @@ class ProjectBlueStack(Stack):
             rule_action=ec2.Action.ALLOW,
             id="application-vpc-ingress-https"
         )
-
-        # application_network_nacl.add_entry(
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     direction=ec2.TrafficDirection.EGRESS,
-        #     rule_number=400,
-        #     traffic=ec2.AclTraffic.tcp_port(443),
-        #     network_acl_entry_name="allowing 443 egress",
-        #     rule_action=ec2.Action.ALLOW,
-        #     id="application-vpc-egress-https"
-        # )
 
         # ----------------------------- User data for application web server -----------------------------
         # User data for the application web server
@@ -247,35 +222,14 @@ class ProjectBlueStack(Stack):
 
         s3Bucket.grant_read(application_web_server)
 
-        # ----------------------------- ec2 for managment server -----------------------------
-        # Creation of Management server
-        # management_server = ec2.Instance(self, 'management-server-ec2',
-        #                                  instance_name='mgmt-server-ec2',
-        #                                  instance_type=ec2.InstanceType.of(
-        #                                      ec2.InstanceClass.T3, ec2.InstanceSize.NANO),
-        #                                  vpc=managementVpc,
-        #                                  vpc_subnets=ec2.SubnetSelection(
-        #                                      subnet_type=ec2.SubnetType.PUBLIC,
-        #                                      # availability_zones=['eu-central-1a']
-        #                                  ),
-        #                                  # link for machine image
-        #                                  # https://bobbyhadz.com/blog/aws-cdk-ec2-instance-example
-        #                                  machine_image=ec2.AmazonLinuxImage(
-        #                                      generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
-        #                                  ),
-        #                                  key_name='project-blue-key-pair'
-        #                                  )
-
         # ----------------------------- NACL for managment server -----------------------------
         # Creating NACL on the management servers subnet to allow traffic over port 22 only from the admin's home ip
 
         management_network_nacl = ec2.NetworkAcl(self, id='management-nacl',
-                                                 vpc=managementVpc,
-                                                 network_acl_name="management-vpc-nacl",
-                                                 subnet_selection=ec2.SubnetSelection(
-                                                     subnet_type=ec2.SubnetType.PUBLIC
-                                                 )
-                                                 )
+            vpc=managementVpc,
+            network_acl_name="management-vpc-nacl",
+            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+            )
 
         # # creating entry to add ingress on port 22 from the admins home ip
         management_network_nacl.add_entry(
@@ -319,25 +273,6 @@ class ProjectBlueStack(Stack):
             id="management-vpc-id-egress"
         )
 
-        # ----------------------------- SG for managment server -----------------------------
-
-        # Creating a security group to attach with the management server
-        # management_security_group = ec2.SecurityGroup(self,
-        #                                               'management-server-sg',
-        #                                               vpc=managementVpc,
-        #                                               allow_all_outbound=True,
-        #                                               security_group_name="management-server-sg",
-        #                                               )
-        # # allowing access only from the admin's home ip
-        # management_security_group.add_ingress_rule(
-        #     peer=ec2.Peer.ipv4("77.163.188.237/32"),
-        #     connection=ec2.Port.tcp(22),
-        #     description="admin home ip to connect with the management server",
-        # )
-
-        # # adding the created security group to the management server ec2
-        # management_server.add_security_group(management_security_group)
-
         # ----------------------------- Ec2 for managment win server -----------------------------
 
         management_server_windows = ec2.Instance(self, 'management-server-ec2-windows',
@@ -347,7 +282,7 @@ class ProjectBlueStack(Stack):
             vpc=managementVpc,
             vpc_subnets=ec2.SubnetSelection(
                 subnet_type=ec2.SubnetType.PUBLIC,
-                # availability_zones=['eu-central-1a']
+                
             ),
             # link for machine image
             machine_image=ec2.WindowsImage(
@@ -406,6 +341,7 @@ class ProjectBlueStack(Stack):
             delete_after=Duration.days(7),
             schedule_expression=events.Schedule.cron(minute='0', hour='8'))
         backup_plan.add_rule(backup_plan_rule)
+
 
         # Configuring the resource that should be backedup
         backup_plan.add_selection(

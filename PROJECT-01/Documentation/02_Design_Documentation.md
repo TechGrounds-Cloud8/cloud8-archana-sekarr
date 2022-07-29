@@ -8,6 +8,7 @@ AWS services used for this project based on the requirements:
 - 2 EC2 instances : 1 each for the management(admin) and appln server 
 - S3 for storage of the user data. The user data contains the script to install the apache when the ec2 instance boots up.
 - AWS Backup for making daily backups. Back up retained up to 7 days. 
+- EBS volumes are created and attached to the EC2 instances and are also encrypted.
 - Security groups and NACLs are made in such a way that the application server can be reached via the managemnt server only.
 ## VPC's
 
