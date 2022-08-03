@@ -23,7 +23,7 @@ class ProjectBlueStack(Stack):
 
         # ----------------------------- VPC for application and management server -----------------------------
         applicationVpc = ec2.Vpc(self, "project-blue-application-vpc", cidr="10.20.20.0/24",
-                                 max_azs=2,
+                                 max_azs=3,
                                  nat_gateways=0,
                                  subnet_configuration=[
                                      ec2.SubnetConfiguration(
@@ -39,6 +39,22 @@ class ProjectBlueStack(Stack):
                                      )
                                      ],
             
+        )
+        applicationLoadBalancer = loadbalancer.ApplicationLoadBalancer(self, "app-server-lb", 
+            vpc=applicationVpc,
+            #security_group=,
+            #vpc_subnets= ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),
+            internet_facing=True
+        )
+         
+
+        # Redirecting HTTP to HTTPS
+        self.applicationLoadBalancer.add_redirect()
+
+
+        listener = applicationLoadBalancer.add_listener("app-server-listener", 
+            port=443, 
+            open=True,
         )
 
         
@@ -142,7 +158,15 @@ class ProjectBlueStack(Stack):
             block_devices=[blockDevice],
         )
 
-        
+        # Adding the ASG as target to the load balancer listener
+        listener.add_targets("target",
+            port=80,
+            targets=[autoscalingGroup],
+            health_check=loadbalancer.HealthCheck(
+                  port="80", 
+                  enabled=True)
+        )
+
         autoscalingGroup.scale_on_request_count("limit-request-per-minute",
             target_requests_per_minute=700 
         )

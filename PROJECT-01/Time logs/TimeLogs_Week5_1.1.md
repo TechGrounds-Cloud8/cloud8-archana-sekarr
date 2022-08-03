@@ -40,18 +40,18 @@ I learnt that the launch template can either be created separately or attach the
 
 ### Daily Report
 
- 
+Created application load balancer, opened listener ports, redirected http to https and target groups
 ### Challenges
 
- 
+Had some questions regarding attaching of security groups and which ports to enable.
 
 ### Solutions
 
-
+For now, I have configured port 443 under listener. Need to work on certification tomorrow.
 
 ### Learnings
 
-
+I learnt that using a private SSL certificate only signed by the CA is very expensive. Casper suggested that using a free SSL certificate or a self-signed certificate are the best options in this case.
 
 # Time Log - Week 5
 
