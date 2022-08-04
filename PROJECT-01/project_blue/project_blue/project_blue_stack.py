@@ -37,9 +37,13 @@ class ProjectBlueStack(Stack):
                                          subnet_type=ec2.SubnetType.PRIVATE_ISOLATED,
                                          cidr_mask=26,
                                      )
-                                     ],
-      
-
+                                    ],
+        gateway_endpoints= {
+                 "S3": ec2.GatewayVpcEndpointOptions(service=ec2.GatewayVpcEndpointAwsService.S3)
+            }
+        
+        )
+        
         applicationLoadBalancer = loadbalancer.ApplicationLoadBalancer(self, "app-server-lb", 
             vpc=applicationVpc,
             internet_facing=True
@@ -142,8 +146,8 @@ class ProjectBlueStack(Stack):
 
         autoscalingGroup = autoscaling.AutoScalingGroup(self, "ASG",
             vpc=applicationVpc,
-            max_capacity=1,
-            min_capacity=3,
+            max_capacity=3,
+            min_capacity=1,
             instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.NANO),
             machine_image=ec2.AmazonLinuxImage(),
               vpc_subnets=ec2.SubnetSelection(
