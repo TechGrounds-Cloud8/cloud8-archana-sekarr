@@ -38,22 +38,21 @@ class ProjectBlueStack(Stack):
                                          cidr_mask=26,
                                      )
                                      ],
-            
+        gateway_endpoints= {
+                 "S3": ec2.GatewayVpcEndpointOptions(service=ec2.GatewayVpcEndpointAwsService.S3)
+            }
         )
+
         applicationLoadBalancer = loadbalancer.ApplicationLoadBalancer(self, "app-server-lb", 
             vpc=applicationVpc,
-            #security_group=,
-            #vpc_subnets= ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),
             internet_facing=True
         )
          
-
         # Redirecting HTTP to HTTPS
-        self.applicationLoadBalancer.add_redirect()
-
+        #self.applicationLoadBalancer.add_redirect()
 
         listener = applicationLoadBalancer.add_listener("app-server-listener", 
-            port=443, 
+            port=80, 
             open=True,
         )
 
@@ -146,8 +145,8 @@ class ProjectBlueStack(Stack):
 
         autoscalingGroup = autoscaling.AutoScalingGroup(self, "ASG",
             vpc=applicationVpc,
-            max_capacity=3,
-            min_capacity=3,
+            max_capacity=1,
+            min_capacity=1,
             instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.NANO),
             machine_image=ec2.AmazonLinuxImage(),
               vpc_subnets=ec2.SubnetSelection(
@@ -162,9 +161,6 @@ class ProjectBlueStack(Stack):
         listener.add_targets("target",
             port=80,
             targets=[autoscalingGroup],
-            health_check=loadbalancer.HealthCheck(
-                  port="80", 
-                  enabled=True)
         )
 
         autoscalingGroup.scale_on_request_count("limit-request-per-minute",
@@ -179,43 +175,51 @@ class ProjectBlueStack(Stack):
 
         
 
-        # # Creating Management VPC and subnets
-        # managementVpc = ec2.Vpc(self, "project-blue-management-vpc", cidr="10.10.10.0/24",
-        #                         max_azs=2,
-        #                         nat_gateways=0,
-        #                         subnet_configuration=[
-        #                             ec2.SubnetConfiguration(
-        #                                 name='Public-Subnet',
-        #                                 subnet_type=ec2.SubnetType.PUBLIC,
-        #                                 cidr_mask=26,
-        #                             )
-        #                         ],
-        #                         )   
+        # Creating Management VPC and subnets
+        managementVpc = ec2.Vpc(self, "project-blue-management-vpc", cidr="10.10.10.0/24",
+                                max_azs=2,
+                                nat_gateways=0,
+                                subnet_configuration=[
+                                    ec2.SubnetConfiguration(
+                                        name='Public-Subnet',
+                                        subnet_type=ec2.SubnetType.PUBLIC,
+                                        cidr_mask=26,
+                                    )
+                                ],
+                                )   
 
-        # # ----------------------------- VPC Peering for application and management server -----------------------------
-        # # Creating VPC Peering between application vpc and management vpc
-        # vpc_peering = ec2.CfnVPCPeeringConnection(self, "app-vpc-mgmt-vpc-peering",
-        #                                           peer_vpc_id=managementVpc.vpc_id,
-        #                                           vpc_id=applicationVpc.vpc_id,
-        #                                           )
+        # ----------------------------- VPC Peering for application and management server -----------------------------
+        # Creating VPC Peering between application vpc and management vpc
+        vpc_peering = ec2.CfnVPCPeeringConnection(self, "app-vpc-mgmt-vpc-peering",
+                                                  peer_vpc_id=managementVpc.vpc_id,
+                                                  vpc_id=applicationVpc.vpc_id,
+                                                  )
 
-        # #  route for application server subnets => management server subnets
-        # # adding route table entries for application server routetables to have a route for the management server vpc
-        # for applicationPublicSubnet in applicationVpc.public_subnets:
-        #     ec2.CfnRoute(self, id=f"{applicationPublicSubnet.node.id} peer route",
-        #                  destination_cidr_block=managementVpc.vpc_cidr_block,
-        #                  route_table_id=applicationPublicSubnet.route_table.route_table_id,
-        #                  vpc_peering_connection_id=vpc_peering.ref,
-        #                  )
+        #  route for application server subnets => management server subnets
+        # adding route table entries for application server routetables to have a route for the management server vpc
+        for applicationPublicSubnet in applicationVpc.public_subnets:
+            ec2.CfnRoute(self, id=f"{applicationPublicSubnet.node.id} peer route",
+                         destination_cidr_block=managementVpc.vpc_cidr_block,
+                         route_table_id=applicationPublicSubnet.route_table.route_table_id,
+                         vpc_peering_connection_id=vpc_peering.ref,
+                         )
 
-        # # route for management server subnets => application server subnets
-        # # adding route table entries for management server routetables to have a route for the application server vpc
-        # for managementPublicSubnet in managementVpc.public_subnets:
-        #     ec2.CfnRoute(self, id=f"{managementPublicSubnet.node.id} route",
-        #                  destination_cidr_block=applicationVpc.vpc_cidr_block,
-        #                  route_table_id=managementPublicSubnet.route_table.route_table_id,
-        #                  vpc_peering_connection_id=vpc_peering.ref,
-        #                  )
+        for applicationPublicSubnet in applicationVpc.isolated_subnets:
+            ec2.CfnRoute(self, id=f"{applicationPublicSubnet.node.id} peer route",
+                         destination_cidr_block=managementVpc.vpc_cidr_block,
+                         route_table_id=applicationPublicSubnet.route_table.route_table_id,
+                         vpc_peering_connection_id=vpc_peering.ref,
+                         )
+
+
+        # route for management server subnets => application server subnets
+        # adding route table entries for management server routetables to have a route for the application server vpc
+        for managementPublicSubnet in managementVpc.public_subnets:
+            ec2.CfnRoute(self, id=f"{managementPublicSubnet.node.id} route",
+                         destination_cidr_block=applicationVpc.vpc_cidr_block,
+                         route_table_id=managementPublicSubnet.route_table.route_table_id,
+                         vpc_peering_connection_id=vpc_peering.ref,
+                         )
 
         # # ----------------------------- S3 bucket for application server user data -----------------------------
 
