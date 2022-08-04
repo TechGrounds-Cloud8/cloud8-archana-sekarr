@@ -38,10 +38,7 @@ class ProjectBlueStack(Stack):
                                          cidr_mask=26,
                                      )
                                      ],
-        gateway_endpoints= {
-                 "S3": ec2.GatewayVpcEndpointOptions(service=ec2.GatewayVpcEndpointAwsService.S3)
-            }
-        )
+      
 
         applicationLoadBalancer = loadbalancer.ApplicationLoadBalancer(self, "app-server-lb", 
             vpc=applicationVpc,
@@ -146,7 +143,7 @@ class ProjectBlueStack(Stack):
         autoscalingGroup = autoscaling.AutoScalingGroup(self, "ASG",
             vpc=applicationVpc,
             max_capacity=1,
-            min_capacity=1,
+            min_capacity=3,
             instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.NANO),
             machine_image=ec2.AmazonLinuxImage(),
               vpc_subnets=ec2.SubnetSelection(
@@ -163,9 +160,9 @@ class ProjectBlueStack(Stack):
             targets=[autoscalingGroup],
         )
 
-        autoscalingGroup.scale_on_request_count("limit-request-per-minute",
-            target_requests_per_minute=700 
-        )
+        # autoscalingGroup.scale_on_request_count("limit-request-per-minute",
+        #     target_requests_per_minute=700 
+        # )
 
         # Auto-scaling policy
         autoscalingGroup.scale_on_cpu_utilization(
