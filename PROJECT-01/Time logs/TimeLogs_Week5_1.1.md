@@ -59,19 +59,18 @@ I learnt that using a private SSL certificate only signed by the CA is very expe
 
 ### Daily Report
 
- 
+Configured the user data and working on self-signed ssl certification
 ### Challenges
 
- 
+ It was very challenging to read the user data in the console and i came across 502 bad gateway error. 
 
 ### Solutions
 
-
+After the Q&A, i learnt a simpler way to over come the 502 error. When I set up an ec2 instance, I need to override the default settings to one that doesn't have a public IP. By doing this, we can ensure that the web server isn't be publicly accessible.
 
 ### Learnings
 
-
-
+I need to work on fixing the error tomorrow and I now know how to approach it. 
 
 # Time Log - Week 5
 
