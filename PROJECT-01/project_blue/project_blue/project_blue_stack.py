@@ -38,9 +38,11 @@ class ProjectBlueStack(Stack):
                                          cidr_mask=26,
                                      )
                                     ],
-        gateway_endpoints= {
-                 "S3": ec2.GatewayVpcEndpointOptions(service=ec2.GatewayVpcEndpointAwsService.S3)
-            }
+        
+        # Removing the vpc endpoint
+        # gateway_endpoints= {
+        #          "S3": ec2.GatewayVpcEndpointOptions(service=ec2.GatewayVpcEndpointAwsService.S3)
+        #     }
         
         )
         
@@ -51,42 +53,44 @@ class ProjectBlueStack(Stack):
          
         # Redirecting HTTP to HTTPS
         #self.applicationLoadBalancer.add_redirect()
-
+        selfSignedCertificateArn = "arn:aws:acm:eu-central-1:105129865262:certificate/94947276-4270-46f5-88a6-8b8b9e5e6026";
         listener = applicationLoadBalancer.add_listener("app-server-listener", 
-            port=80, 
+            port=443, 
             open=True,
+            certificates=[loadbalancer.ListenerCertificate.from_arn(selfSignedCertificateArn)], 
+            ssl_policy=loadbalancer.SslPolicy.FORWARD_SECRECY_TLS12
         )
 
         
         # # ----------------------------- SG for application web server -----------------------------
 
         # # Creating a security group to attach with the application server
-        application_web_server_security_group = ec2.SecurityGroup(self,
-            'application-server-sg',
-            vpc=applicationVpc,
-            allow_all_outbound=True,
-            security_group_name="application-server-sg",
-        )
-        # allowing access to port 80 only from the admin's home ip
-        application_web_server_security_group.add_ingress_rule(
-            peer=ec2.Peer.any_ipv4(),
-            connection=ec2.Port.tcp(80),
-            description="admin home ip to connect see the application webserver",
-        )
+        # application_web_server_security_group = ec2.SecurityGroup(self,
+        #     'application-server-sg',
+        #     vpc=applicationVpc,
+        #     allow_all_outbound=True,
+        #     security_group_name="application-server-sg",
+        # )
+        # # allowing access to port 80 only from the admin's home ip
+        # application_web_server_security_group.add_ingress_rule(
+        #     peer=ec2.Peer.any_ipv4(),
+        #     connection=ec2.Port.tcp(80),
+        #     description="admin home ip to connect see the application webserver",
+        # )
 
-        # allowing access to port 443 only from the admin's home ip
-        application_web_server_security_group.add_ingress_rule(
-            peer=ec2.Peer.any_ipv4(),
-            connection=ec2.Port.tcp(443),
-            description="admin home ip https to connect see the application webserver",
-        )
+        # # allowing access to port 443 only from the admin's home ip
+        # application_web_server_security_group.add_ingress_rule(
+        #     peer=ec2.Peer.any_ipv4(),
+        #     connection=ec2.Port.tcp(443),
+        #     description="admin home ip https to connect see the application webserver",
+        # )
 
-        # allowing access to port 22 only from the admin's home ip
-        application_web_server_security_group.add_ingress_rule(
-            peer=ec2.Peer.any_ipv4(),
-            connection=ec2.Port.tcp(22),
-            description="admin home ip to connect see the application webserver",
-        )
+        # # allowing access to port 22 only from the admin's home ip
+        # application_web_server_security_group.add_ingress_rule(
+        #     peer=ec2.Peer.any_ipv4(),
+        #     connection=ec2.Port.tcp(22),
+        #     description="admin home ip to connect see the application webserver",
+        # )
 
         # # ----------------------------- NACL for application web server -----------------------------
 
@@ -138,8 +142,7 @@ class ProjectBlueStack(Stack):
         #     network_acl_entry_name="allowing 443 ingress",
         #     rule_action=ec2.Action.ALLOW,
         #     id="application-vpc-ingress-https"
-        # )
-
+        # ) 
 
         blockDevice = autoscaling.BlockDevice(device_name="/dev/xvda",
                                 volume=autoscaling.BlockDeviceVolume.ebs(20, encrypted=True));
@@ -149,13 +152,15 @@ class ProjectBlueStack(Stack):
             max_capacity=3,
             min_capacity=1,
             instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.NANO),
-            machine_image=ec2.AmazonLinuxImage(),
+            # Use the AMAZON_LINUX_2 the same one used in the previous application server
+            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2),
               vpc_subnets=ec2.SubnetSelection(
-                subnet_type=ec2.SubnetType.PRIVATE_ISOLATED   
+                subnet_type=ec2.SubnetType.PUBLIC   
             ),
             key_name='project-blue-key-pair', 
-            security_group= application_web_server_security_group,
+            # security_group= application_web_server_security_group,
             block_devices=[blockDevice],
+            associate_public_ip_address = False
         )
 
         # Adding the ASG as target to the load balancer listener
