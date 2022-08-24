@@ -366,6 +366,14 @@ class ProjectBlueStack(Stack):
                             volume=ec2.BlockDeviceVolume.ebs(10, encrypted=True))],
             )
 
+        management_server_windows.user_data.for_windows()
+        management_server_windows.add_user_data(
+            "Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0",
+            "Start-Service sshd",
+            "Set-Service -Name sshd -StartupType 'Automatic'",
+            "New-NetFirewallRule -Name sshd -DisplayName 'Allow SSH' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22",
+        )
+
         # # ----------------------------- SG for managment win server -----------------------------
 
         # Creating a security group to attach with the management server
