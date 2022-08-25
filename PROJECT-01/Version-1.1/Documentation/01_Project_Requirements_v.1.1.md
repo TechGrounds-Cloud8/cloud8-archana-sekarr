@@ -17,7 +17,7 @@
 - The customer believes that no more than 3 servers in total are ever needed, given the user numbers in the past.
 
 
-![01_Project_Requirements_v.1.1](../../00_includes/PROJECT_01/v1.1_architecture.png)
+![01_Project_Requirements_v.1.1](../../../00_includes/PROJECT_01/Project-blue.drawio.png)
 
 ## Forecast for the upcoming design:
 
@@ -41,7 +41,3 @@
 - Design documentation
 
 - Decision documentation
-
-
-
-https://app.diagrams.net/#G1cw8cHDysEbUwvPHXOe_CD9roK54f7n-6
