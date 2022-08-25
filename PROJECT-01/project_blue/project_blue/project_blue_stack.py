@@ -183,7 +183,7 @@ class ProjectBlueStack(Stack):
             key_name='project-blue-key-pair', 
             security_group= application_web_server_security_group,
             block_devices=[blockDevice],
-            associate_public_ip_address = False       
+            # associate_public_ip_address = False       
         )
 
         # Adding the ASG as target to the load balancer listener

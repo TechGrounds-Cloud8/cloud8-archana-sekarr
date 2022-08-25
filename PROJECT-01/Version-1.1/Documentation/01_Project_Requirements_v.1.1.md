@@ -17,6 +17,8 @@
 - The customer believes that no more than 3 servers in total are ever needed, given the user numbers in the past.
 
 
+![01_Project_Requirements_v.1.1](../../00_includes/PROJECT_01/v1.1_architecture.png)
+
 ## Forecast for the upcoming design:
 
 - Need to update the security groups and NACLs to satisfy the best security practise requirements.
@@ -42,3 +44,4 @@
 
 
 
+https://app.diagrams.net/#G1cw8cHDysEbUwvPHXOe_CD9roK54f7n-6

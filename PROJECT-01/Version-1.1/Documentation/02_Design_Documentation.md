@@ -1,31 +1,45 @@
 # Design Documentation
 
-For version 1.0, the entire project is created using CDK and versioned with GIT. So the infrastruture is now available as code. 
+For version 1.1, the project is extended from the version 1.0 to meet the additional project requirements.
 
 AWS services used for this project based on the requirements:
 
 - A VPC
-- 2 EC2 instances : 1 each for the management(admin) and appln server 
-- S3 for storage of the user data. The user data contains the script to install the apache when the ec2 instance boots up.
-- AWS Backup for making daily backups. Back up retained up to 7 days. 
-- EBS volumes are created and attached to the EC2 instances and are also encrypted.
-- Security groups and NACLs are made in such a way that the application server can be reached via the managemnt server only.
+- AutoScaling Group 
+- Application Load balancer (ALB)
+- Listener configuration in ALB and health checks
+- S3 for storage of the user data. The user data contains the script to install the apache when the ec2 instance boots up
+- AWS Backup for making daily backups. Back up retained up to 7 days
+- EBS volumes are created and attached to the EC2 instances and are also encrypted
+- Security groups and NACLs are made in such a way that the application server can be reached via the management server only
+
 ## VPC's
 
 - 2 vpcs are created. An application VPC with CIDR 10.20.20.0/24 and a management VPC with CIDR 10.10.10.0/24 within the same region. 
-- 2 public subnets are created per vpc. 
-- VPC peering connection is created between the 2 vpcs. 
+- Application Servers vpc spans across 3 Availablity zones
+    - 3 public subnets (1 per AZ) are created per vpc.
+    - 3 private subnets (1 per AZ) are created.
+- Management server vpc spans across 2 AZ's.
+- VPC peering connection is created between the application and the management vpcs. 
 - The route tables of each vpc is configured to have the routing information of the other VPC.
 
-## EC2
+## AutoScaling Group (ASG)
 
-- We have one EC2 instance running linux OS with an encrypted EBS Volume hosting the application web server.
-- Second EC2 instance running the Windows OS with an encrypted EBS Volume and which is the management/admin server. 
-- The managament server plays the role of a bastion host/proxy server to reach the resources in the application server.
+- In application server -> To scale the Ec2 instances based on the application demand AutoScaling group is used.
+    - Launch template is defined for the ASG during the scaling.
+    - Ec2 instance configuration from version 1 is used in the launch template configuration.
+- Scaling trigger is configured to follow the cpu utilisation of the ec2 instances.
 
-## Security groups and NACLs.
+## Load Balancer
 
-- Security groups and NACLs are configured such that the web server is reachable from the internet. 
+- Load balancer is created to distribute the traffic among the ec2 instances created by the ASG.
+- A listener is configured for port 443 and a self signed certificate is used to have the https connection.
+- The target group for the listener is the AutoScaling group.
+- Health check is configured for port 80.
+
+## Security groups and NACLs
+
+- Security groups and NACLs are configured such that the web server is reachable from the internet.
 - The management server is reachable from the admin's home IP and the application server is reachable on port 22 from the management server.
 
 ## Storage

@@ -17,4 +17,4 @@ S3 encryption at rest is enabled to ensure the user data script is encrypted at 
 
 ## Backup 
 
-The created vault is also encrypted at rest to ensure data is safe. And back up is
+The created vault is also encrypted at rest to ensure data is safe. 

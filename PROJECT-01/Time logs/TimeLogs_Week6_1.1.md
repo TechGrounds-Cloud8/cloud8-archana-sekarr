@@ -50,3 +50,35 @@ still figuring out the solution for the webserver issue for my colleague.
 ### Learnings
 
 -
+
+## Log 25-08-2022
+
+### Daily Report
+
+Checking my code and finishing documentation for the sprint review tomorrow
+### Challenges
+
+-
+
+### Solutions
+
+-
+### Learnings
+
+-
+
+## Log 26-08-2022
+
+### Daily Report
+
+
+### Challenges
+
+
+
+### Solutions
+
+ 
+
+### Learnings
+
