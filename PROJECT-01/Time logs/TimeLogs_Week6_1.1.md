@@ -71,14 +71,13 @@ Checking my code and finishing documentation for the sprint review tomorrow
 
 ### Daily Report
 
-
+Cleaning up codes and preparing for the final presentation. 
 ### Challenges
 
-
-
+-
 ### Solutions
 
- 
-
+To understand coding better, i am watching some videos on python coding. Quite interesting!
 ### Learnings
 
+-
