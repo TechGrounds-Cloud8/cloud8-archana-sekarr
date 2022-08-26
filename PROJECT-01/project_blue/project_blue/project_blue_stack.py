@@ -295,56 +295,56 @@ class ProjectBlueStack(Stack):
         s3Bucket.grant_read(autoscalingGroup)
 
 
-        # # ----------------------------- NACL for managment server -----------------------------
-        # # Creating NACL on the management servers subnet to allow traffic over port 22 only from the admin's home ip
+        # ----------------------------- NACL for managment server -----------------------------
+        # Creating NACL on the management servers subnet to allow traffic over port 22 only from the admin's home ip
 
-        # management_network_nacl = ec2.NetworkAcl(self, id='management-nacl',
-        #     vpc=managementVpc,
-        #     network_acl_name="management-vpc-nacl",
-        #     subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
-        #     )
+        management_network_nacl = ec2.NetworkAcl(self, id='management-nacl',
+            vpc=managementVpc,
+            network_acl_name="management-vpc-nacl",
+            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+            )
 
-        # # # creating entry to add ingress on port 22 from the admins home ip
-        # management_network_nacl.add_entry(
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     direction=ec2.TrafficDirection.INGRESS,
-        #     rule_number=200,
-        #     traffic=ec2.AclTraffic.tcp_port(22),
-        #     network_acl_entry_name="allowing ssh ingress",
-        #     rule_action=ec2.Action.ALLOW,
-        #     id="management-vpc-id-ingress-ssh"
-        # )
+        # # creating entry to add ingress on port 22 from the admins home ip
+        management_network_nacl.add_entry(
+            cidr=ec2.AclCidr.any_ipv4(),
+            direction=ec2.TrafficDirection.INGRESS,
+            rule_number=200,
+            traffic=ec2.AclTraffic.tcp_port(22),
+            network_acl_entry_name="allowing ssh ingress",
+            rule_action=ec2.Action.ALLOW,
+            id="management-vpc-id-ingress-ssh"
+        )
 
-        # management_network_nacl.add_entry(
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     direction=ec2.TrafficDirection.INGRESS,
-        #     rule_number=400,
-        #     traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),
-        #     network_acl_entry_name="allowing ssh traffic back from the app server",
-        #     rule_action=ec2.Action.ALLOW,
-        #     id="management-vpc-id-ingress-ephemeral"
-        # )
+        management_network_nacl.add_entry(
+            cidr=ec2.AclCidr.any_ipv4(),
+            direction=ec2.TrafficDirection.INGRESS,
+            rule_number=400,
+            traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),
+            network_acl_entry_name="allowing ssh traffic back from the app server",
+            rule_action=ec2.Action.ALLOW,
+            id="management-vpc-id-ingress-ephemeral"
+        )
 
-        # management_network_nacl.add_entry(
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     direction=ec2.TrafficDirection.INGRESS,
-        #     rule_number=300,
-        #     traffic=ec2.AclTraffic.tcp_port(3389),
-        #     network_acl_entry_name="allowing rdp ingress",
-        #     rule_action=ec2.Action.ALLOW,
-        #     id="management-vpc-id-ingress-win-rdp"
-        # )
+        management_network_nacl.add_entry(
+            cidr=ec2.AclCidr.any_ipv4(),
+            direction=ec2.TrafficDirection.INGRESS,
+            rule_number=300,
+            traffic=ec2.AclTraffic.tcp_port(3389),
+            network_acl_entry_name="allowing rdp ingress",
+            rule_action=ec2.Action.ALLOW,
+            id="management-vpc-id-ingress-win-rdp"
+        )
 
-        # # creating entry to add egress on all ports to admin home ip for ssh on port 22
-        # management_network_nacl.add_entry(
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     direction=ec2.TrafficDirection.EGRESS,
-        #     rule_number=200,
-        #     traffic=ec2.AclTraffic.all_traffic(),
-        #     network_acl_entry_name="allowing ssh and rdp egress",
-        #     rule_action=ec2.Action.ALLOW,
-        #     id="management-vpc-id-egress"
-        # )
+        # creating entry to add egress on all ports to admin home ip for ssh on port 22
+        management_network_nacl.add_entry(
+            cidr=ec2.AclCidr.any_ipv4(),
+            direction=ec2.TrafficDirection.EGRESS,
+            rule_number=200,
+            traffic=ec2.AclTraffic.all_traffic(),
+            network_acl_entry_name="allowing ssh and rdp egress",
+            rule_action=ec2.Action.ALLOW,
+            id="management-vpc-id-egress"
+        )
 
         # ----------------------------- Ec2 for managment win server -----------------------------
 
@@ -378,11 +378,12 @@ class ProjectBlueStack(Stack):
 
         # Creating a security group to attach with the management server
         management_security_group_win = ec2.SecurityGroup(self,
-                                                          'management-server-win-sg',
-                                                          vpc=managementVpc,
-                                                          allow_all_outbound=True,
-                                                          security_group_name="management-server-win-sg",
-                                                          )
+            'management-server-win-sg',
+            vpc=managementVpc,
+            allow_all_outbound=True,
+            security_group_name="management-server-win-sg",
+        )
+        
         # allowing access only from the admin's home ip
         management_security_group_win.add_ingress_rule(
             peer=ec2.Peer.ipv4("77.163.188.237/24"),
@@ -403,31 +404,25 @@ class ProjectBlueStack(Stack):
             management_security_group_win)
 
 
-        # # ---------------------------------- adding a vault explicitly --------------------------------------------
-        # # code to create the backup valut explicitly
-        # app_server_backup_vault = backup_service.BackupVault(
-        #     self, "server_backup_vault",
-        #     backup_vault_name="app-server-backup-vault"
-        # )
+        # ---------------------------------- adding a vault explicitly --------------------------------------------
+        # code to create the backup valut explicitly
+        app_server_backup_vault = backup_service.BackupVault(
+            self, "server_backup_vault",
+            backup_vault_name="app-server-backup-vault"
+        )
 
-        # # back up plan for the web server - daily back up and retention for 7 days
-        # backup_plan = backup_service.BackupPlan(
-        #     self, "server_backup",
-        #     backup_vault= app_server_backup_vault
-        # )
+        # back up plan for the web server - daily back up and retention for 7 days
+        backup_plan = backup_service.BackupPlan(
+            self, "server_backup",
+            backup_vault= app_server_backup_vault
+        )
 
         
-        # # created a custom rule that runs ever day at 8 and takes a backup daily. The retention is set to 7 days
-        # backup_plan_rule = backup_service.BackupPlanRule(
-        #     delete_after=Duration.days(7),
-        #     schedule_expression=events.Schedule.cron(minute='0', hour='8'))
-        # backup_plan.add_rule(backup_plan_rule)
+        # created a custom rule that runs ever day at 8 and takes a backup daily. The retention is set to 7 days
+        backup_plan_rule = backup_service.BackupPlanRule(
+            delete_after=Duration.days(7),
+            schedule_expression=events.Schedule.cron(minute='0', hour='8'))
+        backup_plan.add_rule(backup_plan_rule)
 
 
-        # # Configuring the resource that should be backedup
-        # backup_plan.add_selection(
-        #     id="backup-selection-id",
-        #     resources=[ 
-        #         backup_service.BackupResource.from_ec2_instance(
-        #             application_web_server)]
-        # )
+        
