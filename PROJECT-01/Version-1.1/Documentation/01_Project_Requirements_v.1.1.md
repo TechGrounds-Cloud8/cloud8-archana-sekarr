@@ -1,23 +1,23 @@
 # Project requirements
 
-- Include best security practises, that have not yet been implemented in the version 1.0.
+1. Include best security practises, that have not yet been implemented in the version 1.0.
 
-- Web server should be accessible only via a proxy and not via a public IP so a loadbalancer is required to satisy this requirement.
+2. Web server should be accessible only via a proxy and not via a public IP so a loadbalancer is required to satisy this requirement.
 
-- Should a user connect to the load balancer via HTTP, this connection should be automatically upgraded to HTTPS.
+3. Should a user connect to the load balancer via HTTP, this connection should be automatically upgraded to HTTPS.
 
-- The connection must be secured with at least TLS 1.2 or higher.
+4. The connection must be secured with at least TLS 1.2 or higher.
 
-- The web server must undergo a health check on a regular basis so the loadbalancer performs these checks.
+5. The web server must undergo a health check on a regular basis so the loadbalancer performs these checks.
 
-- Should the web server fail this health check, the server should be automatically restored.
+6. Should the web server fail this health check, the server should be automatically restored.
 
-- If the the web server has continuous high load, additional servers should be launched. 
+7. If the the web server has continuous high load, additional servers should be launched. 
 
-- The customer believes that no more than 3 servers in total are ever needed, given the user numbers in the past.
+8. The customer believes that no more than 3 servers in total are ever needed, given the user numbers in the past.
 
 
-![01_Project_Requirements_v.1.1](../../../00_includes/PROJECT_01/Project-blue.drawio_4.png)
+![01_Project_Requirements_v.1.1](../../../00_includes/PROJECT_01/Project-blue-Page-1.drawio_final1.png)
 
 ## Forecast for the upcoming design:
 
