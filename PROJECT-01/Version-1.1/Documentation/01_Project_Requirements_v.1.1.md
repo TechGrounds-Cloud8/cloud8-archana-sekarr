@@ -16,9 +16,6 @@
 
 8. The customer believes that no more than 3 servers in total are ever needed, given the user numbers in the past.
 
-
-![01_Project_Requirements_v.1.1](../../../00_includes/PROJECT_01/Project-blue-Page-1.drawio_final1.png)
-
 ## Forecast for the upcoming design:
 
 - Need to update the security groups and NACLs to satisfy the best security practise requirements.

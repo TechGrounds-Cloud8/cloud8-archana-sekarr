@@ -15,7 +15,7 @@ from aws_cdk import (
     aws_elasticloadbalancingv2 as loadbalancer
 )
 
-
+myHomeIp = "77.163.188.237/24"
 class ProjectBlueStack(Stack):
     # Creating Application VPC and subnets
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
@@ -386,7 +386,7 @@ class ProjectBlueStack(Stack):
         
         # allowing access only from the admin's home ip
         management_security_group_win.add_ingress_rule(
-            peer=ec2.Peer.ipv4("77.163.188.237/24"),
+            peer=ec2.Peer.ipv4(myHomeIp),
             connection=ec2.Port.tcp(3389),
             description="admin home ip to connect with the management win server",
         )
@@ -394,7 +394,7 @@ class ProjectBlueStack(Stack):
         # allowing access only from the admin's home ip over port 22
         # With port 22 open we can use the windows as a bastion host to jump into the app server instance
         management_security_group_win.add_ingress_rule(
-            peer=ec2.Peer.ipv4("77.163.188.237/24"),
+            peer=ec2.Peer.ipv4(myHomeIp),
             connection=ec2.Port.tcp(22),
             description="admin home ip to connect with the management server over ssh",
         )

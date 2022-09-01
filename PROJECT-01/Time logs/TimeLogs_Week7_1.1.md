@@ -59,7 +59,7 @@ After discussing with my coaches, i learnt that I should do the architecture bas
 
 ### Daily Report
 
--
+Practising for the presentation tomorrow.
 
 ### Challenges
 

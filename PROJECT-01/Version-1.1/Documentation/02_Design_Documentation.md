@@ -13,6 +13,11 @@ AWS services used for this project based on the requirements:
 - EBS volumes are created and attached to the EC2 instances and are also encrypted
 - Security groups and NACLs are made in such a way that the application server can be reached via the management server only
 
+Based on the requirements, the following architecture is made.
+
+
+![01_Project_Requirements_v.1.1](../../../00_includes/PROJECT_01/Project-blue-Page-1.drawio_final1.png)
+
 ## VPC's
 
 - 2 vpcs are created. An application VPC with CIDR 10.20.20.0/24 and a management VPC with CIDR 10.10.10.0/24 within the same region. 
@@ -47,9 +52,15 @@ AWS services used for this project based on the requirements:
 - S3 bucket is created to store the userdata script. The apache web server index.html file is also stored in S3.
 - EBS volumes are created and attached to the EC2 instances and are also encrypted.
 
+![02_Design_Documentation](../../../00_includes/PROJECT_01/ebs_vol.png)
 ## Backup 
 
 - Used the AWS back up service to create the backup plan for 7 days on the application server. 
+
+![02_Design_Documentation](../../../00_includes/PROJECT_01/serverbackup.png)
+
 - The back up is scheduled to be created at 08.00 CET everyday and a vault is created to store the backups. 
+
 - The vault uses the default KMS key to encrypt the backups.
 
+![02_Design_Documentation](../../../00_includes/PROJECT_01/backupvault.png)

@@ -27,6 +27,7 @@ The secure way of deploying the application web server involves deploying the ec
 
 But NAT is expensive and it is not preferred by the product owner as a solution. An alternative was explored, where the ec2 instances were deployed in the public subnet but with no public IP atached to them. However, this also didnt give access to the internet to install the necessary packages mentioned in the user data.
 
+So for now, I have deployed the web servr in the public subnet.  Private subnets have also been created to cater to the growing business needs in the future where a NAT can be used.
 ## User data for the management server
 
 To automate the installation of the openssh server in the management server, User data is added with the required commands to install, start the server and configure the firewalls.
